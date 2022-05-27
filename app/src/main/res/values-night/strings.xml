@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="produk">Produk</string>
+    <string name="transaksi">Transaksi</string>
+    <string name="gaji">Gaji</string>
+</resources>

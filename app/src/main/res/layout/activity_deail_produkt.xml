@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".kasir.owner.ui.produk.DetailProdukActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imgreview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/imgreview" />
+
+
+                <ImageView
+                    android:id="@+id/imgback"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/imgback" />
+
+            </RelativeLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/txtjudul"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_toLeftOf="@+id/txtharga"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Aesthetic Daisy"
+                            android:textColor="@color/black"
+                            android:textSize="25dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtharga"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Rp 175.000"
+                            android:textColor="@color/biru"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="30 Produk"
+                        android:id="@+id/txtstok"
+                        android:textSize="15dp"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="Deskripsi"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:id="@+id/txtdeskripsi"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="Untuk kulit berjerawat, normal, kombinasi
+Isi: 15ml
+Fungsi :
+- Medehridrasi kulit
+- Mengurangi kerutan akibar penuaan dini
+- Melembutkan/membuat kulit lebih kenyal
+- Mencerahkan kulit
+- Mengurangi minyak berlebih
+- Menyamarkan flek2 dan bekas jerawat"
+                        android:textSize="17dp"
+                        android:textStyle="normal" />
+
+
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:background="#FCF0F0"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+
+            <LinearLayout
+                android:id="@+id/btneditproduk"
+                android:layout_width="184dp"
+                android:layout_height="64dp"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/imgtambah"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Edit Produk"
+                    android:textColor="@color/white"
+                    android:textSize="22dp"
+
+                    android:textStyle="normal" />
+            </LinearLayout>
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+

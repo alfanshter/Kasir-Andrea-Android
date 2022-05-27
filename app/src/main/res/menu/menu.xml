@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_produk"
+        android:icon="@drawable/produk"
+        android:title="@string/produk" />
+
+
+    <item
+        android:id="@+id/navigation_transaksi"
+        android:icon="@drawable/transaksi"
+        android:title="@string/transaksi" />
+    <item
+        android:id="@+id/navigation_gaji"
+        android:icon="@drawable/gaji"
+        android:title="@string/gaji" />
+</menu>

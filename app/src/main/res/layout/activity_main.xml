@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context=".kasir.ListProdukActivity"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:background="@drawable/imgback"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:background="@drawable/imgchart"
+            android:layout_alignParentEnd="true"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="Produk"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="31dp"
+        android:layout_marginTop="30dp"
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.SearchView
+            android:layout_centerVertical="true"
+            android:layout_width="match_parent"
+            android:layout_toLeftOf="@id/btnbarcode"
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:background="@drawable/imgbarcode"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/btnbarcode"
+
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:id="@+id/rvproduk"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

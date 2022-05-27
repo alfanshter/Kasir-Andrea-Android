@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        android:background="@color/warnadasar"
+        tools:context=".kasir.owner.ui.produk.ProdukOwnerFragment"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hi, Owner"
+                android:layout_toLeftOf="@id/img_foto"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/roboto_medium"
+                android:textSize="17dp"
+                android:textColor="@color/black"
+                android:layout_marginRight="10dp"
+
+                />
+
+            <ImageView
+                android:id="@+id/img_foto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/imgchart" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Produk"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_medium"
+            android:textSize="31dp"
+            android:layout_marginTop="30dp"
+            android:layout_height="wrap_content" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.SearchView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@id/btntambah"
+                android:background="@drawable/edtbackground" />
+
+            <ImageView
+                android:id="@+id/btntambah"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/btnadd" />
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:id="@+id/rvproduk"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</layout>

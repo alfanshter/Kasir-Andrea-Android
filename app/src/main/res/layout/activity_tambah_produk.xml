@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".kasir.owner.ui.produk.TambahProdukActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--            header-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/imgback" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Tambah Produk"
+                    android:textColor="@color/black"
+                    android:textSize="29dp" />
+            </RelativeLayout>
+
+            <!--            foto-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="172dp"
+                android:background="#E4E4E4">
+
+                <ImageView
+                    android:id="@+id/imgfoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <ImageButton
+                    android:id="@+id/btncamera"
+                    android:layout_width="50dp"
+                    android:layout_height="45dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/ic_camera_enhance" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/btncamera"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Tambah Foto Produk"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+
+                    />
+            </RelativeLayout>
+            <!--            nama produk-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Nama Produk"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtnamaproduk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/edtinput"
+                android:fontFamily="@font/roboto_medium"
+                android:hint="Masukkan Nama Produk"
+                android:paddingLeft="10dp"
+                android:textSize="13dp" />
+            <!--            deskripsi produk-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Deskripsi Produk"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtdeskripsi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/edtinput"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="top"
+                android:hint="Masukkan Deskripsi Produk"
+                android:minHeight="100dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:textSize="13dp" />
+
+            <!--            Harga-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp">
+
+                <ImageView
+                    android:id="@+id/imgharga"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/imgharga" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/imgharga"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Harga"
+                    android:textColor="@color/black"
+                    android:textSize="17dp" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtharga"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:hint="Atur"
+                    android:inputType="number"
+                    android:paddingLeft="10dp"
+                    android:textSize="13dp" />
+
+
+            </RelativeLayout>
+
+            <!--            Stok-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp">
+
+                <ImageView
+                    android:id="@+id/imgstok"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/imgharga" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/imgstok"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Stok"
+                    android:textColor="@color/black"
+                    android:textSize="17dp" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtstok"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:hint="Atur"
+                    android:inputType="number"
+                    android:paddingLeft="10dp"
+                    android:textSize="13dp" />
+
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnbatalkan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/biru"
+                    android:text="Batalkan"
+                    android:layout_marginRight="10dp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="17dp"
+                    app:cornerRadius="10dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnsimpan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/biru"
+                    android:text="Simpan"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="17dp"
+
+                    app:cornerRadius="10dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</layout>

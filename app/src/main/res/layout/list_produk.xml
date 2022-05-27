@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/color"
+    android:layout_marginTop="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:id="@+id/ln_baris2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="-10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_toLeftOf="@id/lnharga"
+        android:layout_toRightOf="@+id/rvfoto"
+        android:background="@drawable/imgbackground"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtnama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Sari Murni Jeruk Nipis"
+            android:textColor="@color/black"
+            android:textSize="14.5dp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/txtdeskripsi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginRight="35dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Untuk kulit berjerawat, normal, kombinasi
+Isi: 15ml
+Fungsi :
+"
+            android:textSize="12dp"
+            android:textStyle="normal" />
+
+    </LinearLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="100dp"
+        android:id="@+id/rvfoto"
+        android:layout_height="100dp">
+        <ImageView
+            android:id="@+id/imgfoto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/imgaestheticdaisy" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:id="@+id/lnharga"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="-35dp"
+        android:background="@drawable/imgbiru"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/txtharga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="175k"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+
+            android:textStyle="bold" />
+    </LinearLayout>
+</RelativeLayout>
