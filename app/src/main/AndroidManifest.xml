@@ -13,6 +13,9 @@
         android:theme="@style/Theme.KasirAndrea"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".kasir.owner.ui.admin.TambahAdminActivity"
+            android:exported="false" />
+        <activity
             android:name=".kasir.admin.DetailProdukAdminActivity"
             android:exported="false" />
         <activity

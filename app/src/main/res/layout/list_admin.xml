@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#E6E6E6"
+    app:cardCornerRadius="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="#E6E6E6"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txtinisial_nama"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/oval"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="A"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/txtinisial_nama"
+            android:layout_alignTop="@+id/txtinisial_nama"
+
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Nama Admin"
+                android:id="@+id/txtnama"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="13dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Admin"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/black"
+                android:textSize="10dp"/>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_baseline_arrow_forward_ios_24"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/btnback"
+            android:layout_marginRight="20dp"/>
+
+
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

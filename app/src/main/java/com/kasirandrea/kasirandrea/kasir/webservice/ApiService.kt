@@ -1,6 +1,7 @@
 package com.kasirandrea.kasirandrea.kasir.webservice
 
 import com.kasirandrea.kasirandrea.kasir.LoginResponse
+import com.kasirandrea.kasirandrea.kasir.model.admin.AdminResponse
 import com.kasirandrea.kasirandrea.kasir.model.produk.PostProdukResponse
 import com.kasirandrea.kasirandrea.kasir.model.produk.ProdukResponse
 import okhttp3.MultipartBody
@@ -56,6 +57,29 @@ interface ApiService {
     //Produk
     @GET("produk")
     fun getproduk(): Call<ProdukResponse>
-    //=======================END PRODUK==================
 
+    //Pencarian Produk
+    @GET("search_produk")
+    fun search_produk(
+        @Query("nama") nama : String
+    ): Call<ProdukResponse>
+    //=======================END PRODUK==================
+    //=======================ADMIN==================
+    //Tambah ADMIN
+    @Multipart
+    @POST("tambah_admin")
+    fun tambah_admin(
+        @Part("nama") nama: RequestBody,
+        @Part("alamat") alamat: RequestBody,
+        @Part("telepon") telepon: RequestBody,
+        @Part("email") email: RequestBody,
+        @Part foto: MultipartBody.Part?,
+        @Part("username") username: RequestBody,
+        @Part("password") password: RequestBody,
+        @Part("confirm_password") confirm_password: RequestBody,
+    ): Call<PostProdukResponse>
+
+    //Produk
+    @GET("get_admin")
+    fun get_admin(): Call<AdminResponse>
 }

@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.kasirandrea.kasirandrea.R
+import com.kasirandrea.kasirandrea.kasir.owner.ui.admin.AdminFragment
 import com.kasirandrea.kasirandrea.kasir.owner.ui.gaji.GajiOwnerFragment
 import com.kasirandrea.kasirandrea.kasir.owner.ui.produk.ProdukOwnerFragment
 import com.kasirandrea.kasirandrea.kasir.owner.ui.transaksi.TransaksiOwnerFragment
@@ -32,6 +33,15 @@ class OwnerMenuActivity : AppCompatActivity() {
                     supportFragmentManager.beginTransaction().replace(
                         R.id.framehome,
                         GajiOwnerFragment()
+                    ).commit()
+                    return@OnNavigationItemSelectedListener true
+
+                }
+
+                R.id.navigation_admin -> {
+                    supportFragmentManager.beginTransaction().replace(
+                        R.id.framehome,
+                        AdminFragment()
                     ).commit()
                     return@OnNavigationItemSelectedListener true
 

@@ -6,10 +6,10 @@
 
     <size
         android:width="310dp"
-        android:height="40dp"/>
+        android:height="63dp"/>
 
     <corners
-        android:radius="12dp"/>
+        android:radius="13dp"/>
 
     <stroke
         android:color="#B5B5B5"

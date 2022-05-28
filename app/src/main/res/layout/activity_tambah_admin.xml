@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".kasir.owner.ui.admin.TambahAdminActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/imgback" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Tambah Admin"
+                    android:textColor="@color/black"
+                    android:textSize="29dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/lyttambahadmin"
+                android:minHeight="150dp"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:id="@+id/btnuploadfoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/btnuploadfoto" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/btnuploadfoto"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Upload Foto"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:layout_width="180dp"
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/imgfoto"
+                    android:visibility="gone"
+                    android:background="@color/black"
+                    android:layout_height="180dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Nama Lengkap"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtnamalengkap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:paddingLeft="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/edtinput"
+                android:minHeight="33dp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Alamat"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtalamat"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/rounded_edittext"
+                android:minHeight="60dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Telepon"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edttelepon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:paddingLeft="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/edtinput"
+                android:minHeight="33dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Username"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtusername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:paddingLeft="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/edtinput"
+                android:minHeight="33dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Password"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtpassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:paddingLeft="10dp"
+                android:inputType="textPassword"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/edtinput"
+                android:minHeight="33dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Ulangi Password"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtulangi_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:paddingLeft="10dp"
+                android:inputType="textPassword"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/edtinput"
+                android:minHeight="33dp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnbatalkan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/biru"
+                    android:text="Batalkan"
+                    android:layout_marginRight="10dp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="17dp"
+                    app:cornerRadius="10dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnsimpan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/biru"
+                    android:text="Simpan"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="17dp"
+
+                    app:cornerRadius="10dp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

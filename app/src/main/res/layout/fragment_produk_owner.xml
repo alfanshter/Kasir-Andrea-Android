@@ -55,7 +55,8 @@
             android:orientation="horizontal"
             android:layout_height="wrap_content">
 
-            <androidx.appcompat.widget.SearchView
+            <SearchView
+                android:id="@+id/src_produk"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
