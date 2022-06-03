@@ -13,6 +13,15 @@
         android:theme="@style/Theme.KasirAndrea"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".kasir.admin.produk.OrderAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".kasir.admin.produk.ProdukAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".kasir.owner.ui.admin.DetailAdminActivity"
+            android:exported="false" />
+        <activity
             android:name=".kasir.owner.ui.admin.TambahAdminActivity"
             android:exported="false" />
         <activity

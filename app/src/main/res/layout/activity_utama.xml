@@ -1,78 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
-    android:layout_height="match_parent"
-    tools:context=".kasir.admin.UtamaActivity">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:gravity="end"
-    android:layout_height="wrap_content">
-    <TextView
-        android:layout_width="wrap_content"
-        android:text="Hi, Linda!"
-        android:fontFamily="@font/roboto_medium"
-        android:textStyle="bold"
-        android:textSize="25dp"
-        android:layout_marginTop="20dp"
-        android:id="@+id/txtnama"
-        android:textColor="@color/black"
-        android:layout_height="wrap_content"/>
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:background="@drawable/imgfoto"
-        android:layout_toRightOf="@id/txtnama"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:id="@+id/imgfoto"
-        android:layout_marginRight="20dp"
-        android:layout_height="wrap_content"/>
+    <data>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:text="Kasir"
-        android:textSize="17dp"
-        android:layout_below="@+id/txtnama"
-        android:layout_toLeftOf="@id/imgfoto"
-        android:fontFamily="@font/roboto_medium"
-        android:textColor="@color/biru"
-        android:layout_marginTop="10dp"
-        android:layout_height="wrap_content"/>
+    </data>
 
-</RelativeLayout>
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:background="@drawable/imgutama"
-        android:layout_gravity="center"
-        android:layout_marginTop="70dp"
-        android:layout_height="wrap_content"/>
-
-    <com.google.android.material.button.MaterialButton
+    <LinearLayout
         android:layout_width="match_parent"
-        app:cornerRadius="10dp"
-        app:backgroundTint="@color/biru"
-        android:padding="10dp"
-        android:layout_marginTop="30dp"
-        android:text="INPUT PESANAN"
-        android:fontFamily="@font/roboto_medium"
-        android:textStyle="bold"
-        android:textSize="18dp"
-        android:layout_height="wrap_content"/>
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:layout_height="match_parent"
+        tools:context=".kasir.admin.UtamaActivity">
 
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="match_parent"
-        app:cornerRadius="10dp"
-        app:backgroundTint="@color/biru"
-        android:padding="10dp"
-        android:text="LIST PESANAN"
-        android:fontFamily="@font/roboto_medium"
-        android:textStyle="bold"
-        android:textSize="18dp"
-        android:layout_height="wrap_content"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:gravity="end"
+            android:layout_height="wrap_content">
 
-</LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Hi, Linda!"
+                android:fontFamily="@font/roboto_medium"
+                android:textStyle="bold"
+                android:textSize="25dp"
+                android:layout_marginTop="20dp"
+                android:id="@+id/txtnama"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/imgfoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@id/txtnama"
+                android:background="@drawable/imgfoto" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Kasir"
+                android:textSize="17dp"
+                android:layout_below="@+id/txtnama"
+                android:layout_toLeftOf="@id/imgfoto"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="@color/biru"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:background="@drawable/imgutama"
+            android:layout_gravity="center"
+            android:layout_marginTop="70dp"
+            android:layout_height="wrap_content" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            app:cornerRadius="10dp"
+            app:backgroundTint="@color/biru"
+            android:id="@+id/btninputpesanan"
+            android:padding="10dp"
+            android:layout_marginTop="30dp"
+            android:text="INPUT PESANAN"
+            android:fontFamily="@font/roboto_medium"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_height="wrap_content" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            app:cornerRadius="10dp"
+            app:backgroundTint="@color/biru"
+            android:padding="10dp"
+            android:text="LIST PESANAN"
+            android:fontFamily="@font/roboto_medium"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</layout>

@@ -9,6 +9,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.kasirandrea.kasirandrea.R
 import com.kasirandrea.kasirandrea.databinding.ActivityLoginBinding
 import com.kasirandrea.kasirandrea.kasir.LoginResponse
+import com.kasirandrea.kasirandrea.kasir.admin.UtamaActivity
 import com.kasirandrea.kasirandrea.kasir.owner.OwnerMenuActivity
 import com.kasirandrea.kasirandrea.kasir.session.SessionManager
 import com.kasirandrea.kasirandrea.kasir.webservice.ApiClient
@@ -57,6 +58,11 @@ class LoginActivity : AppCompatActivity(),AnkoLogger {
                             startActivity<OwnerMenuActivity>()
                             finish()
                         }else{
+                            toast("login berhasil")
+                            sessionManager.setid_user(response.body()!!.data!!.id!!)
+                            sessionManager.setLogin(true)
+                            startActivity<UtamaActivity>()
+                            finish()
 
                         }
 

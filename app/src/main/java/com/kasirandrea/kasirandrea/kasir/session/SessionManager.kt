@@ -30,4 +30,15 @@ class SessionManager(private val context: Context?) {
     {
         return Pref?.getBoolean(isloginowner,false)
     }
+
+    private val isIduser = "idusers"
+    fun setid_user(check: Int){
+        editor?.putInt(isIduser,check)
+        editor?.commit()
+    }
+
+    fun getid_user():Int?
+    {
+        return Pref?.getInt(isIduser,0)
+    }
 }

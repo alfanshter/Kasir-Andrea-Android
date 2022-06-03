@@ -1,80 +1,75 @@
-package com.kasirandrea.kasirandrea.kasir.owner.ui.admin
+package com.kasirandrea.kasirandrea.kasir.admin.produk
 
+import android.app.ProgressDialog
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.kasirandrea.kasirandrea.R
-import com.kasirandrea.kasirandrea.databinding.ActivityTambahAdminBinding
-import com.kasirandrea.kasirandrea.databinding.FragmentAdminBinding
-import com.kasirandrea.kasirandrea.databinding.FragmentProdukOwnerBinding
-import com.kasirandrea.kasirandrea.kasir.adapter.AdminAdapter
-import com.kasirandrea.kasirandrea.kasir.model.admin.AdminModel
-import com.kasirandrea.kasirandrea.kasir.model.admin.AdminResponse
+import com.kasirandrea.kasirandrea.databinding.ActivityDeailProduktBinding
+import com.kasirandrea.kasirandrea.databinding.ActivityProdukAdminBinding
+import com.kasirandrea.kasirandrea.kasir.adapter.ProdukAdapter
+import com.kasirandrea.kasirandrea.kasir.model.produk.ProdukModel
+import com.kasirandrea.kasirandrea.kasir.model.produk.ProdukResponse
 import com.kasirandrea.kasirandrea.kasir.owner.ui.produk.DetailProdukActivity
+import com.kasirandrea.kasirandrea.kasir.session.SessionManager
 import com.kasirandrea.kasirandrea.kasir.webservice.ApiClient
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
+import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class AdminFragment : Fragment(),AnkoLogger {
-    lateinit var binding : FragmentAdminBinding
-    private lateinit var mAdapter: AdminAdapter
+class ProdukAdminActivity : AppCompatActivity(),AnkoLogger {
 
+    private lateinit var mAdapter: ProdukAdapter
+    lateinit var binding : ActivityProdukAdminBinding
     var api = ApiClient.instance()
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_admin,container,false)
+    lateinit var progressDialog: ProgressDialog
+    lateinit var sessionManager: SessionManager
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_produk_admin)
         binding.lifecycleOwner = this
-
-        binding.btnTambah.setOnClickListener {
-            startActivity<TambahAdminActivity>()
-        }
-
-
-        binding.rvadmin.layoutManager = LinearLayoutManager(requireContext().applicationContext)
-        binding.rvadmin.setHasFixedSize(true)
-        (binding.rvadmin.layoutManager as LinearLayoutManager).orientation =
+        binding.rvproduk.layoutManager = LinearLayoutManager(this)
+        binding.rvproduk.setHasFixedSize(true)
+        (binding.rvproduk.layoutManager as LinearLayoutManager).orientation =
             LinearLayoutManager.VERTICAL
-        return  binding.root
+
+
     }
 
-    fun getadmin()
+    fun getproduk()
     {
-        api.get_admin()
-            .enqueue(object : Callback<AdminResponse> {
+        api.getproduk()
+            .enqueue(object : Callback<ProdukResponse> {
                 override fun onResponse(
-                    call: Call<AdminResponse>,
-                    response: Response<AdminResponse>
+                    call: Call<ProdukResponse>,
+                    response: Response<ProdukResponse>
                 ) {
                     try {
                         if (response.isSuccessful) {
-                            val notesList = mutableListOf<AdminModel>()
+                            val notesList = mutableListOf<ProdukModel>()
                             val data = response.body()
                             for (hasil in data!!.data!!) {
                                 notesList.add(hasil)
-                                mAdapter = AdminAdapter(notesList)
-                                binding.rvadmin.adapter = mAdapter
+                                mAdapter = ProdukAdapter(notesList)
+                                binding.rvproduk.adapter = mAdapter
 
-                                mAdapter.setDialog(object : AdminAdapter.Dialog{
-                                    override fun onClick(position: Int, AdminModel: AdminModel) {
+                                mAdapter.setDialog(object : ProdukAdapter.Dialog{
+                                    override fun onClick(position: Int, produkModel: ProdukModel) {
                                         val gson = Gson()
-                                        val noteJson = gson.toJson(AdminModel)
-                                        startActivity<DetailAdminActivity>("admin" to noteJson)
+                                        val noteJson = gson.toJson(produkModel)
+                                        startActivity<OrderAdminActivity>("produk" to noteJson)
 
                                     }
 
@@ -94,7 +89,6 @@ class AdminFragment : Fragment(),AnkoLogger {
                                 }
 
                             })
-
                         } else {
                             toast("gagal mendapatkan response")
                         }
@@ -103,7 +97,7 @@ class AdminFragment : Fragment(),AnkoLogger {
                     }
                 }
 
-                override fun onFailure(call: Call<AdminResponse>, t: Throwable) {
+                override fun onFailure(call: Call<ProdukResponse>, t: Throwable) {
                     info { "dinda ${t.message}" }
                 }
 
@@ -111,32 +105,31 @@ class AdminFragment : Fragment(),AnkoLogger {
 
     }
 
-    private fun getsearch(searchTerm: String?,notelist : MutableList<AdminModel>) {
+    private fun getsearch(searchTerm: String?,notelist : MutableList<ProdukModel>) {
         notelist.clear()
         if (!TextUtils.isEmpty(searchTerm)) {
             val serchtext: String =
                 searchTerm!!.substring(0, 1).toUpperCase() + searchTerm.substring(1)
 
-            api.search_admin(serchtext).enqueue(object : Callback<AdminResponse>{
+            api.search_produk(serchtext).enqueue(object : Callback<ProdukResponse>{
                 override fun onResponse(
-                    call: Call<AdminResponse>,
-                    response: Response<AdminResponse>
+                    call: Call<ProdukResponse>,
+                    response: Response<ProdukResponse>
                 ) {
                     try {
                         if (response.isSuccessful) {
-                            val notesList = mutableListOf<AdminModel>()
+                            val notesList = mutableListOf<ProdukModel>()
                             val data = response.body()
                             for (hasil in data!!.data!!) {
                                 notesList.add(hasil)
-                                mAdapter = AdminAdapter(notesList)
-                                binding.rvadmin.adapter = mAdapter
+                                mAdapter = ProdukAdapter(notesList)
+                                binding.rvproduk.adapter = mAdapter
 
-                                mAdapter.setDialog(object : AdminAdapter.Dialog{
-                                    override fun onClick(position: Int, AdminModel: AdminModel) {
+                                mAdapter.setDialog(object : ProdukAdapter.Dialog{
+                                    override fun onClick(position: Int, produkModel: ProdukModel) {
                                         val gson = Gson()
-                                        val noteJson = gson.toJson(AdminModel)
-                                        startActivity<DetailProdukActivity>("AdminModel" to noteJson)
-
+                                        val noteJson = gson.toJson(produkModel)
+                                        startActivity<OrderAdminActivity>("produk" to noteJson)
                                     }
 
                                 })
@@ -163,7 +156,7 @@ class AdminFragment : Fragment(),AnkoLogger {
                     }
                 }
 
-                override fun onFailure(call: Call<AdminResponse>, t: Throwable) {
+                override fun onFailure(call: Call<ProdukResponse>, t: Throwable) {
                     TODO("Not yet implemented")
                 }
 
@@ -171,33 +164,33 @@ class AdminFragment : Fragment(),AnkoLogger {
 
 
             val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(
-                requireContext().applicationContext,
+                this,
                 RecyclerView.VERTICAL,
                 false
             )
 
         } else {
             notelist.clear()
-            api.get_admin()
-                .enqueue(object : Callback<AdminResponse> {
+            api.getproduk()
+                .enqueue(object : Callback<ProdukResponse> {
                     override fun onResponse(
-                        call: Call<AdminResponse>,
-                        response: Response<AdminResponse>
+                        call: Call<ProdukResponse>,
+                        response: Response<ProdukResponse>
                     ) {
                         try {
                             if (response.isSuccessful) {
-                                val notesList = mutableListOf<AdminModel>()
+                                val notesList = mutableListOf<ProdukModel>()
                                 val data = response.body()
                                 for (hasil in data!!.data!!) {
                                     notesList.add(hasil)
-                                    mAdapter = AdminAdapter(notesList)
-                                    binding.rvadmin.adapter = mAdapter
+                                    mAdapter = ProdukAdapter(notesList)
+                                    binding.rvproduk.adapter = mAdapter
 
-                                    mAdapter.setDialog(object : AdminAdapter.Dialog{
-                                        override fun onClick(position: Int, AdminModel: AdminModel) {
+                                    mAdapter.setDialog(object : ProdukAdapter.Dialog{
+                                        override fun onClick(position: Int, produkModel: ProdukModel) {
                                             val gson = Gson()
-                                            val noteJson = gson.toJson(AdminModel)
-                                            startActivity<DetailProdukActivity>("AdminModel" to noteJson)
+                                            val noteJson = gson.toJson(produkModel)
+                                            startActivity<OrderAdminActivity>("produk" to noteJson)
 
                                         }
 
@@ -213,7 +206,7 @@ class AdminFragment : Fragment(),AnkoLogger {
                         }
                     }
 
-                    override fun onFailure(call: Call<AdminResponse>, t: Throwable) {
+                    override fun onFailure(call: Call<ProdukResponse>, t: Throwable) {
                         info { "dinda ${t.message}" }
                     }
 
@@ -221,9 +214,10 @@ class AdminFragment : Fragment(),AnkoLogger {
         }
     }
 
+
     override fun onStart() {
         super.onStart()
-        getadmin()
-    }
+        getproduk()
 
+    }
 }

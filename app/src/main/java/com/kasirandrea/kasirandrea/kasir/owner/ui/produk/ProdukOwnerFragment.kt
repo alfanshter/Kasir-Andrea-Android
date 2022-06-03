@@ -1,5 +1,6 @@
 package com.kasirandrea.kasirandrea.kasir.owner.ui.produk
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
@@ -16,8 +17,11 @@ import com.google.gson.Gson
 import com.kasirandrea.kasirandrea.R
 import com.kasirandrea.kasirandrea.databinding.FragmentProdukOwnerBinding
 import com.kasirandrea.kasirandrea.kasir.adapter.ProdukAdapter
+import com.kasirandrea.kasirandrea.kasir.auth.LoginActivity
+import com.kasirandrea.kasirandrea.kasir.model.produk.PostProdukResponse
 import com.kasirandrea.kasirandrea.kasir.model.produk.ProdukModel
 import com.kasirandrea.kasirandrea.kasir.model.produk.ProdukResponse
+import com.kasirandrea.kasirandrea.kasir.session.SessionManager
 import com.kasirandrea.kasirandrea.kasir.webservice.ApiClient
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
@@ -32,6 +36,8 @@ class ProdukOwnerFragment : Fragment(),AnkoLogger {
 
     lateinit var binding : FragmentProdukOwnerBinding
     var api = ApiClient.instance()
+    lateinit var progressDialog: ProgressDialog
+    lateinit var sessionManager: SessionManager
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,8 +45,8 @@ class ProdukOwnerFragment : Fragment(),AnkoLogger {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_produk_owner,container,false)
         binding.lifecycleOwner = this
-
-
+        progressDialog = ProgressDialog(requireActivity())
+        sessionManager = SessionManager(requireContext().applicationContext)
 
         binding.btntambah.setOnClickListener {
             startActivity<TambahProdukActivity>()
@@ -51,10 +57,39 @@ class ProdukOwnerFragment : Fragment(),AnkoLogger {
         (binding.rvproduk.layoutManager as LinearLayoutManager).orientation =
             LinearLayoutManager.VERTICAL
 
+        binding.imgFoto.setOnClickListener {
+            logout()
+        }
 
 
         return binding.root
 
+    }
+
+    fun logout(){
+        loading(true)
+        api.logout().enqueue(object : Callback<PostProdukResponse>{
+            override fun onResponse(
+                call: Call<PostProdukResponse>,
+                response: Response<PostProdukResponse>
+            ) {
+                if (response.isSuccessful){
+                    if (response.body()!!.status == 1){
+                        loading(false)
+                        sessionManager.setLoginowner(false)
+                        startActivity<LoginActivity>()
+                        requireActivity().finish()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<PostProdukResponse>, t: Throwable) {
+                loading(false)
+                info { "dinda ${t.message}" }
+                toast("Kesalahan jaringan")
+            }
+
+        })
     }
 
     fun getproduk()
@@ -227,6 +262,16 @@ class ProdukOwnerFragment : Fragment(),AnkoLogger {
     override fun onStart() {
         super.onStart()
         getproduk()
+    }
+
+    fun loading(status: Boolean) {
+        if (status) {
+            progressDialog.setTitle("Loading...")
+            progressDialog.setCanceledOnTouchOutside(false)
+            progressDialog.show()
+        } else {
+            progressDialog.dismiss()
+        }
     }
 
 }

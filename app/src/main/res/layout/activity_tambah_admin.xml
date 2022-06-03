@@ -142,6 +142,7 @@
                 android:textSize="15dp"
                 android:paddingLeft="10dp"
                 android:layout_marginLeft="20dp"
+                android:inputType="number"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/edtinput"

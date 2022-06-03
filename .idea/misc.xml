@@ -10,10 +10,14 @@
         <entry key="app/src/main/res/drawable/oval.xml" value="0.2553846153846154" />
         <entry key="app/src/main/res/drawable/rounded_edittext.xml" value="0.2140625" />
         <entry key="app/src/main/res/layout/activity_deail_produkt.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_detail_admin.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/activity_detail_produk_admin.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_order_admin.xml" value="0.24375" />
         <entry key="app/src/main/res/layout/activity_owner_menu.xml" value="0.2578125" />
+        <entry key="app/src/main/res/layout/activity_produk_admin.xml" value="0.24375" />
+        <entry key="app/src/main/res/layout/activity_produk_owner.xml" value="0.2578125" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.1962962962962963" />
         <entry key="app/src/main/res/layout/activity_tambah_admin.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_tambah_produk.xml" value="0.22" />

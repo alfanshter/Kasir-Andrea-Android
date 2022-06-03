@@ -2,6 +2,7 @@ package com.kasirandrea.kasirandrea.kasir.webservice
 
 import com.kasirandrea.kasirandrea.kasir.LoginResponse
 import com.kasirandrea.kasirandrea.kasir.model.admin.AdminResponse
+import com.kasirandrea.kasirandrea.kasir.model.post.PostKeranjang
 import com.kasirandrea.kasirandrea.kasir.model.produk.PostProdukResponse
 import com.kasirandrea.kasirandrea.kasir.model.produk.ProdukResponse
 import okhttp3.MultipartBody
@@ -16,6 +17,10 @@ interface ApiService {
         @Field("username") username : String,
         @Field("password") password: String
     ): Call<LoginResponse>
+
+     @GET("logout")
+    fun logout(
+    ): Call<PostProdukResponse>
 
     //=======================PRODUK==================
     //UPLOAD PRODUK
@@ -79,7 +84,19 @@ interface ApiService {
         @Part("confirm_password") confirm_password: RequestBody,
     ): Call<PostProdukResponse>
 
-    //Produk
+    //Admin
     @GET("get_admin")
     fun get_admin(): Call<AdminResponse>
+
+    //Pencarian Admin
+    @GET("search_admin")
+    fun search_admin(
+        @Query("nama") nama : String
+    ): Call<AdminResponse>
+    //=======================END ADMIN==================
+
+    //=======================KERANJANG==================
+    @Headers("Content-Type: application/json")
+    @POST("tambah_keranjang")
+    fun tambah_keranjang(@Body post: PostKeranjang): Call<PostProdukResponse>
 }
