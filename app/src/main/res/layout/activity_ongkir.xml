@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".kasir.admin.ongkir.OngkirActivity">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imgstatus_datapembeli"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="31dp"
+                android:background="@drawable/status_cek_ongkir" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Cek Ongkir"
+                android:textColor="@color/biru"
+                android:textSize="29dp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Kurir"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/spnkurir"
+                android:layout_marginRight="19dp"
+                android:background="@drawable/edtinput" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Provinsi Asal (diisi kecuali kurir manual)"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/spnprovinsi_asal"
+                android:paddingLeft="10dp"
+                android:layout_marginRight="19dp"
+                android:background="@drawable/edtinput" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Kota Asal"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/spnkota_asal"
+                android:paddingLeft="10dp"
+                android:layout_marginRight="19dp"
+                android:background="@drawable/edtinput" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Provinsi Tujuan"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/spnprovinsi_tujuan"
+                android:paddingLeft="10dp"
+                android:layout_marginRight="19dp"
+                android:background="@drawable/edtinput" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Kota Tujuan"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/spnkota_tujuan"
+                android:paddingLeft="10dp"
+                android:layout_marginRight="19dp"
+                android:background="@drawable/edtinput" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Berat (gram)"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/edtberat"
+                android:inputType="number"
+                android:paddingLeft="10dp"
+                android:layout_marginRight="19dp"
+                android:background="@drawable/edtinput" />
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                app:backgroundTint="@color/biru"
+                app:cornerRadius="10dp"
+                android:text="Cek Ongkir"
+                android:id="@+id/btncekongkir"
+                android:textAllCaps="false"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="19dp"
+                android:layout_margin="19dp"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_height="wrap_content" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/rvcekongkir"
+                android:layout_marginRight="19dp"
+                android:layout_height="wrap_content"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Nama Kurir"
+                android:visibility="gone"
+                android:id="@+id/txtnamakurir"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:id="@+id/edtnamakurir"
+                android:paddingLeft="10dp"
+                android:layout_marginRight="19dp"
+                android:background="@drawable/edtinput" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Ongkir (bisa diketik)"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/edtongkirmanual"
+                android:paddingLeft="10dp"
+                android:inputType="number"
+                android:layout_marginRight="19dp"
+                android:background="@drawable/edtinput" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                app:backgroundTint="@color/biru"
+                app:cornerRadius="10dp"
+                android:text="Proses"
+                android:id="@+id/btnproses"
+                android:textAllCaps="false"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="19dp"
+                android:layout_margin="19dp"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</layout>

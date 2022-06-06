@@ -2,7 +2,11 @@ package com.kasirandrea.kasirandrea.kasir.webservice
 
 import com.kasirandrea.kasirandrea.kasir.LoginResponse
 import com.kasirandrea.kasirandrea.kasir.model.admin.AdminResponse
+import com.kasirandrea.kasirandrea.kasir.model.keranjang.KeranjangResponse
+import com.kasirandrea.kasirandrea.kasir.model.keranjang.TotalBelanjaResponse
+import com.kasirandrea.kasirandrea.kasir.model.pesanan.PesananResponse
 import com.kasirandrea.kasirandrea.kasir.model.post.PostKeranjang
+import com.kasirandrea.kasirandrea.kasir.model.post.PostPesanan
 import com.kasirandrea.kasirandrea.kasir.model.produk.PostProdukResponse
 import com.kasirandrea.kasirandrea.kasir.model.produk.ProdukResponse
 import okhttp3.MultipartBody
@@ -14,11 +18,11 @@ interface ApiService {
     @FormUrlEncoded
     @POST("login")
     fun login(
-        @Field("username") username : String,
+        @Field("username") username: String,
         @Field("password") password: String
     ): Call<LoginResponse>
 
-     @GET("logout")
+    @GET("logout")
     fun logout(
     ): Call<PostProdukResponse>
 
@@ -66,8 +70,9 @@ interface ApiService {
     //Pencarian Produk
     @GET("search_produk")
     fun search_produk(
-        @Query("nama") nama : String
+        @Query("nama") nama: String
     ): Call<ProdukResponse>
+
     //=======================END PRODUK==================
     //=======================ADMIN==================
     //Tambah ADMIN
@@ -91,7 +96,7 @@ interface ApiService {
     //Pencarian Admin
     @GET("search_admin")
     fun search_admin(
-        @Query("nama") nama : String
+        @Query("nama") nama: String
     ): Call<AdminResponse>
     //=======================END ADMIN==================
 
@@ -99,4 +104,44 @@ interface ApiService {
     @Headers("Content-Type: application/json")
     @POST("tambah_keranjang")
     fun tambah_keranjang(@Body post: PostKeranjang): Call<PostProdukResponse>
+
+    //kurang keranjang
+    @FormUrlEncoded
+    @POST("kurang_keranjang")
+    fun kurang_keranjang(
+        @Field("id") id: Int,
+        @Field("jumlah") jumlah: Int,
+    ): Call<PostProdukResponse>
+
+    //data keranjang sesuai id
+    @GET("get_keranjang")
+    fun get_keranjang(
+        @Query("id_user") id_user: Int
+    ): Call<KeranjangResponse>
+
+    //data keranjang sesuai id
+    @GET("get_keranjang_pesanan")
+    fun get_keranjang_pesanan(
+        @Query("nomorpesanan") nomorpesanan: String
+    ): Call<KeranjangResponse>
+
+
+    //Hapus Keranjang
+    @FormUrlEncoded
+    @POST("hapus_keranjang")
+    fun hapus_keranjang(
+        @Field("id") id: Int
+    ): Call<PostProdukResponse>
+
+    //Sum Keranjang
+    @GET("total_belanja")
+    fun total_belanja(
+        @Query("id_user") id_user: Int
+    ): Call<TotalBelanjaResponse>
+    //=======================END KERANJANG==================
+    //=======================PESANAN==================
+    @Headers("Content-Type: application/json")
+    @POST("tambah_transaksi")
+    fun tambah_transaksi(@Body post: PostPesanan): Call<PesananResponse>
+
 }

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/color"
+    android:layout_marginTop="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="91dp">
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="100dp"
+        android:id="@+id/rvfoto"
+        android:layout_height="100dp">
+        <ImageView
+            android:id="@+id/imgfoto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/imgaestheticdaisy" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <LinearLayout
+        android:id="@+id/ln_baris2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_toLeftOf="@id/lnharga"
+        android:layout_toRightOf="@+id/rvfoto"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtnama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Sari Murni Jeruk Nipis"
+            android:textColor="@color/black"
+            android:textSize="14.5dp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/txtdeskripsi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="White Glow Serum (15m.."
+            android:textSize="12dp"
+            android:textStyle="normal" />
+
+
+        <TextView
+            android:id="@+id/txtharga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Rp. 00.000.000"
+            android:textColor="@color/black"
+            android:textSize="14.5dp" />
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/btnhapus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/ic_baseline_delete_24"
+        android:backgroundTint="@color/black" />
+    <LinearLayout
+        android:id="@+id/lnharga"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/btnminus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/imgminus" />
+
+        <TextView
+            android:id="@+id/txtjumlah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="1"
+            android:textColor="@color/black"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/btnplus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/imgplus" />
+
+    </LinearLayout>
+</RelativeLayout>

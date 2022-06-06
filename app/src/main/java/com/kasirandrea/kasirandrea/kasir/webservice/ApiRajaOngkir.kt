@@ -5,7 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class ApiClient {
+class ApiRajaOngkir {
     companion object{
         private var retrofit : Retrofit? = null
         private var opt = OkHttpClient.Builder().apply {
@@ -18,7 +18,7 @@ class ApiClient {
             return if (retrofit ==null){
                 retrofit = Retrofit.Builder().apply {
                     client(opt)
-                    baseUrl("http://192.168.1.5:8000/api/")
+                    baseUrl("https://api.rajaongkir.com/starter/")
                     addConverterFactory(GsonConverterFactory.create())
                 }.build()
                 retrofit!!
@@ -27,7 +27,7 @@ class ApiClient {
             }
         }
 
-        fun instance() = getClient().create(ApiService::class.java)
+        fun instance() = getClient().create(ApiServiceRajaOngkir::class.java)
     }
 
 }

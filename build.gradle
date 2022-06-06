@@ -15,6 +15,18 @@ buildscript {
     }
 }
 
+//allprojects {
+//    ext.anko_version='0.10.8'
+//
+//    repositories {
+//        google()
+//        mavenCentral()
+//        maven { url 'https://jitpack.io' }
+//    }
+//
+//
+//}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".kasir.admin.datapembeli.DataPembeliActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imgstatus_datapembeli"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="31dp"
+                android:background="@drawable/status_data_pembeli" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Data Pembeli"
+                android:textColor="@color/biru"
+                android:textSize="29dp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Nama Lengkap"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/edtnama"
+                android:layout_marginRight="19dp"
+                android:background="@drawable/edtinput" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Telepon"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/edttelepon"
+                android:inputType="number"
+                android:paddingLeft="10dp"
+                android:layout_marginRight="19dp"
+                android:background="@drawable/edtinput" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Alamat"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="100dp"
+                android:layout_marginLeft="19dp"
+                android:paddingLeft="10dp"
+                android:gravity="start"
+                android:paddingTop="5dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/edtalamat"
+                android:layout_marginRight="19dp"
+                android:background="@drawable/edtinput" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                app:backgroundTint="@color/biru"
+                app:cornerRadius="10dp"
+                android:text="Selanjutnya"
+                android:id="@+id/btnselanjutnya"
+                android:textAllCaps="false"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="19dp"
+                android:layout_margin="19dp"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

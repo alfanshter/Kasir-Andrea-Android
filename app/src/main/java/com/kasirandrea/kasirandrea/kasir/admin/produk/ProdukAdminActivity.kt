@@ -13,6 +13,7 @@ import com.kasirandrea.kasirandrea.R
 import com.kasirandrea.kasirandrea.databinding.ActivityDeailProduktBinding
 import com.kasirandrea.kasirandrea.databinding.ActivityProdukAdminBinding
 import com.kasirandrea.kasirandrea.kasir.adapter.ProdukAdapter
+import com.kasirandrea.kasirandrea.kasir.admin.keranjang.KeranjangFragment
 import com.kasirandrea.kasirandrea.kasir.model.produk.ProdukModel
 import com.kasirandrea.kasirandrea.kasir.model.produk.ProdukResponse
 import com.kasirandrea.kasirandrea.kasir.owner.ui.produk.DetailProdukActivity
@@ -36,6 +37,10 @@ class ProdukAdminActivity : AppCompatActivity(),AnkoLogger {
     lateinit var progressDialog: ProgressDialog
     lateinit var sessionManager: SessionManager
 
+    companion object{
+        val sheet = KeranjangFragment()
+
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_produk_admin)
@@ -45,8 +50,12 @@ class ProdukAdminActivity : AppCompatActivity(),AnkoLogger {
         (binding.rvproduk.layoutManager as LinearLayoutManager).orientation =
             LinearLayoutManager.VERTICAL
 
+        binding.imgFoto.setOnClickListener {
+                sheet.show(supportFragmentManager, "KeranjangFragment")
+        }
 
     }
+
 
     fun getproduk()
     {

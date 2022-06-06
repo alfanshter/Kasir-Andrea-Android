@@ -165,7 +165,7 @@ Fungsi :
 
             <TextView
                 android:layout_width="wrap_content"
-                android:text="1"
+                android:text="0"
                 android:textStyle="bold"
                 android:id="@+id/txtjumlah"
                 android:textColor="@color/black"

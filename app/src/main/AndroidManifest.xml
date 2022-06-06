@@ -13,6 +13,18 @@
         android:theme="@style/Theme.KasirAndrea"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".kasir.admin.listpesanan.ListPesananActivity"
+            android:exported="false" />
+        <activity
+            android:name=".kasir.admin.detailpesanan.DetailPesananActivity"
+            android:exported="false" />
+        <activity
+            android:name=".kasir.admin.ongkir.OngkirActivity"
+            android:exported="false" />
+        <activity
+            android:name=".kasir.admin.datapembeli.DataPembeliActivity"
+            android:exported="false" />
+        <activity
             android:name=".kasir.admin.produk.OrderAdminActivity"
             android:exported="false" />
         <activity
