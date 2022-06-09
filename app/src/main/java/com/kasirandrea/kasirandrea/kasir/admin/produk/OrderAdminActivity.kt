@@ -51,6 +51,9 @@ class OrderAdminActivity : AppCompatActivity(),AnkoLogger {
         binding.txtdeskripsi.text = produkmodel!!.deskripsi
         Picasso.get().load(Constant.folder_foto+produkmodel!!.foto).centerCrop().fit().into(binding.imgreview)
 
+        binding.imgback.setOnClickListener {
+            finish()
+        }
         binding.btnminus.setOnClickListener {
             if (counter == 0){
                 binding.txtjumlah.text = counter.toString()

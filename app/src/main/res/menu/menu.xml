@@ -18,6 +18,6 @@
 
     <item
         android:id="@+id/navigation_admin"
-        android:icon="@drawable/gaji"
+        android:icon="@drawable/menuadmin"
         android:title="@string/admin" />
 </menu>

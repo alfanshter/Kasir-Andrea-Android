@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import com.kasirandrea.kasirandrea.R
 import com.kasirandrea.kasirandrea.databinding.ActivityProdukAdminBinding
 import com.kasirandrea.kasirandrea.databinding.ActivityUtamaBinding
+import com.kasirandrea.kasirandrea.kasir.admin.listpesanan.ListPesananActivity
 import com.kasirandrea.kasirandrea.kasir.admin.produk.ProdukAdminActivity
 import com.kasirandrea.kasirandrea.kasir.auth.LoginActivity
 import com.kasirandrea.kasirandrea.kasir.model.produk.PostProdukResponse
@@ -38,9 +39,16 @@ class UtamaActivity : AppCompatActivity(),AnkoLogger {
             startActivity<ProdukAdminActivity>()
         }
 
+        binding.btnlistpesanan.setOnClickListener {
+            startActivity<ListPesananActivity>()
+        }
+
         binding.imgfoto.setOnClickListener {
             logout()
         }
+
+        binding.txtnama.text = sessionManager.getNama()
+
 
     }
     fun logout(){

@@ -38,6 +38,7 @@ class ProdukOwnerFragment : Fragment(),AnkoLogger {
     var api = ApiClient.instance()
     lateinit var progressDialog: ProgressDialog
     lateinit var sessionManager: SessionManager
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -155,7 +156,7 @@ class ProdukOwnerFragment : Fragment(),AnkoLogger {
             val serchtext: String =
                 searchTerm!!.substring(0, 1).toUpperCase() + searchTerm.substring(1)
 
-            api.search_produk(serchtext).enqueue(object : Callback<ProdukResponse>{
+            api.search_produk(serchtext.toInt()).enqueue(object : Callback<ProdukResponse>{
                 override fun onResponse(
                     call: Call<ProdukResponse>,
                     response: Response<ProdukResponse>

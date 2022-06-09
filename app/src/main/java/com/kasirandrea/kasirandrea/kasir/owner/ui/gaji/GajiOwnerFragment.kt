@@ -1,60 +1,152 @@
 package com.kasirandrea.kasirandrea.kasir.owner.ui.gaji
 
+import android.app.ProgressDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
+import androidx.databinding.DataBindingUtil
+import com.google.android.material.snackbar.Snackbar
+import com.google.gson.Gson
 import com.kasirandrea.kasirandrea.R
+import com.kasirandrea.kasirandrea.databinding.FragmentGajiOwnerBinding
+import com.kasirandrea.kasirandrea.databinding.FragmentProdukOwnerBinding
+import com.kasirandrea.kasirandrea.kasir.adapter.ProdukAdapter
+import com.kasirandrea.kasirandrea.kasir.model.gaji.GajiResponse
+import com.kasirandrea.kasirandrea.kasir.model.produk.PostProdukResponse
+import com.kasirandrea.kasirandrea.kasir.webservice.ApiClient
+import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.info
+import org.jetbrains.anko.support.v4.startActivity
+import org.jetbrains.anko.support.v4.toast
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class GajiOwnerFragment : Fragment(),AnkoLogger {
+    lateinit var progressDialog: ProgressDialog
 
-/**
- * A simple [Fragment] subclass.
- * Use the [GajiOwnerFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class GajiOwnerFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+    lateinit var binding : FragmentGajiOwnerBinding
+    var api = ApiClient.instance()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_gaji_owner, container, false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_gaji_owner,container,false)
+        binding.lifecycleOwner = this
+        progressDialog = ProgressDialog(requireActivity())
+
+        binding.btnubah.setOnClickListener {
+            binding.edtgajipokok.isEnabled = true
+            binding.edtbonus.isEnabled = true
+            binding.lnedit.visibility = View.VISIBLE
+
+        }
+
+        binding.btnsimpan.setOnClickListener {
+            val gaji = binding.edtgajipokok.text.toString().trim()
+            val bonus = binding.edtbonus.text.toString().trim()
+            if (gaji.isNotEmpty() && bonus.isNotEmpty()){
+                setgaji(gaji.toInt(),bonus.toInt())
+            }else{
+                Snackbar.make(it,"jangan kosongi kolom",3000).show()
+            }
+        }
+
+
+        binding.btnbatalkan.setOnClickListener {
+            onStart()
+            binding.lnedit.visibility = View.GONE
+
+        }
+        return  binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment GajiOwnerFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            GajiOwnerFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onStart() {
+        super.onStart()
+        binding.edtgajipokok.isEnabled = false
+        binding.edtbonus.isEnabled = false
+        binding.lnedit.visibility = View.GONE
+
+
+        getgaji()
+    }
+
+    fun setgaji(gaji : Int, bonus : Int){
+        loading(true)
+        api.set_gaji(gaji, bonus)
+            .enqueue(object : Callback<PostProdukResponse> {
+                override fun onResponse(
+                    call: Call<PostProdukResponse>,
+                    response: Response<PostProdukResponse>
+                ) {
+                    try {
+                        if (response.isSuccessful) {
+                            loading(false)
+                            if (response.body()!!.status == 1){
+                                toast("Gaji berhasil di tambah")
+                                onStart()
+                            }else{
+
+                            }
+                        } else {
+                            loading(false)
+                            toast("gagal mendapatkan response")
+                        }
+                    } catch (e: Exception) {
+                        loading(false)
+                        info { "dinda ${e.message}" }
+                    }
                 }
-            }
+
+                override fun onFailure(call: Call<PostProdukResponse>, t: Throwable) {
+                    info { "dinda ${t.message}" }
+                    loading(false)
+                    toast("kesalahan jaringan")
+                }
+
+            })
+
+    }
+
+    fun getgaji()
+    {
+        api.get_gaji()
+            .enqueue(object : Callback<GajiResponse> {
+                override fun onResponse(
+                    call: Call<GajiResponse>,
+                    response: Response<GajiResponse>
+                ) {
+                    try {
+                        if (response.isSuccessful) {
+                            binding.edtgajipokok.setText(response.body()!!.data!!.gaji.toString())
+                            binding.edtbonus.setText(response.body()!!.data!!.bonus.toString())
+                        } else {
+                            toast("gagal mendapatkan response")
+                        }
+                    } catch (e: Exception) {
+                        info { "dinda ${e.message}" }
+                    }
+                }
+
+                override fun onFailure(call: Call<GajiResponse>, t: Throwable) {
+                    info { "dinda ${t.message}" }
+                }
+
+            })
+
+    }
+
+    fun loading(status: Boolean) {
+        if (status) {
+            progressDialog.setTitle("Loading...")
+            progressDialog.setCanceledOnTouchOutside(false)
+            progressDialog.show()
+        } else {
+            progressDialog.dismiss()
+        }
     }
 }

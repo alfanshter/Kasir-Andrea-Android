@@ -60,6 +60,7 @@ class LoginActivity : AppCompatActivity(),AnkoLogger {
                         }else{
                             toast("login berhasil")
                             sessionManager.setid_user(response.body()!!.data!!.id!!)
+                            sessionManager.setNama(response.body()!!.data!!.nama!!)
                             sessionManager.setLogin(true)
                             startActivity<UtamaActivity>()
                             finish()

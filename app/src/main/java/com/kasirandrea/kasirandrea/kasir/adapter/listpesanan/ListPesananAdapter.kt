@@ -1,4 +1,4 @@
-package com.kasirandrea.kasirandrea.kasir.adapter
+package com.kasirandrea.kasirandrea.kasir.adapter.listpesanan
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,14 +7,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.kasirandrea.kasirandrea.R
-import com.kasirandrea.kasirandrea.kasir.model.produk.ProdukModel
-import com.kasirandrea.kasirandrea.kasir.webservice.Constant
-import com.squareup.picasso.Picasso
-import kotlin.math.ln
-import kotlin.math.pow
+import com.kasirandrea.kasirandrea.kasir.model.pesanan.PesananModel
+import java.sql.Date
+import java.sql.Timestamp
+import java.text.DecimalFormat
+import java.text.NumberFormat
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ListPesananAdapter(
-    private val notesList: MutableList<ProdukModel>
+    private val notesList: MutableList<PesananModel>
     ) : RecyclerView.Adapter<ListPesananAdapter.ViewHolder>() {
 
     //database
@@ -22,7 +24,7 @@ class ListPesananAdapter(
 
 
     interface Dialog {
-        fun onClick(position: Int, produkModel: ProdukModel)
+        fun onClick(position: Int, PesananModel: PesananModel)
     }
 
     fun setDialog(dialog: Dialog) {
@@ -60,12 +62,27 @@ class ListPesananAdapter(
 
         val note = notesList[position]
 
+        val formatter: NumberFormat = DecimalFormat("#,###")
+
+        holder.txtnomorpesanan.text = note.nomorpesanan
+        holder.txtharga.text = "Rp. ${formatter.format(note.harga)}"
+        if (note.is_status == 0){
+            holder.txtstatus.text = "Dalam Proses"
+        }else if (note.is_status == 1){
+            holder.txtstatus.text = "Sukses"
+        }else if (note.is_status == 2){
+            holder.txtstatus.text = "Gagal"
+        }
+        val sdf = SimpleDateFormat("dd MMM, hh:mm a")
+        val currentDate = sdf.format(note.createdAt)
+        holder.txtkalender.text = currentDate
         holder.itemView.setOnClickListener {
             if(dialog != null){
                 dialog!!.onClick(holder.layoutPosition,note)
             }
         }
     }
+
 
 
 

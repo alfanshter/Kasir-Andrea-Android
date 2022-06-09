@@ -2,11 +2,19 @@ package com.kasirandrea.kasirandrea.kasir.webservice
 
 import com.kasirandrea.kasirandrea.kasir.LoginResponse
 import com.kasirandrea.kasirandrea.kasir.model.admin.AdminResponse
+import com.kasirandrea.kasirandrea.kasir.model.gaji.GajiAdminResponse
+import com.kasirandrea.kasirandrea.kasir.model.gaji.GajiResponse
+import com.kasirandrea.kasirandrea.kasir.model.gaji.PostBayarGaji
+import com.kasirandrea.kasirandrea.kasir.model.gaji.RiwayatGajiResponse
 import com.kasirandrea.kasirandrea.kasir.model.keranjang.KeranjangResponse
 import com.kasirandrea.kasirandrea.kasir.model.keranjang.TotalBelanjaResponse
+import com.kasirandrea.kasirandrea.kasir.model.pesanan.ListPesananResponse
+import com.kasirandrea.kasirandrea.kasir.model.pesanan.NotaResponse
+import com.kasirandrea.kasirandrea.kasir.model.pesanan.PesananBulananResponse
 import com.kasirandrea.kasirandrea.kasir.model.pesanan.PesananResponse
 import com.kasirandrea.kasirandrea.kasir.model.post.PostKeranjang
 import com.kasirandrea.kasirandrea.kasir.model.post.PostPesanan
+import com.kasirandrea.kasirandrea.kasir.model.produk.DetailProdukResponse
 import com.kasirandrea.kasirandrea.kasir.model.produk.PostProdukResponse
 import com.kasirandrea.kasirandrea.kasir.model.produk.ProdukResponse
 import okhttp3.MultipartBody
@@ -63,15 +71,35 @@ interface ApiService {
         @Part("oldImage") oldImage: RequestBody,
     ): Call<PostProdukResponse>
 
+    //EDIT PRODUK TANPA FOTO
+    @FormUrlEncoded
+    @POST("hapus_produk")
+    fun hapus_produk(
+        @Field("oldImage") oldImage: String,
+        @Field("id") id: Int    ): Call<PostProdukResponse>
+
     //Produk
     @GET("produk")
     fun getproduk(): Call<ProdukResponse>
 
+
+    //EDIT PRODUK TANPA FOTO
+    @FormUrlEncoded
+    @POST("generate_qrcode")
+    fun generate_qrcode(
+        @Field("id") id: Int): Call<NotaResponse>
+
     //Pencarian Produk
     @GET("search_produk")
     fun search_produk(
-        @Query("nama") nama: String
+        @Query("id") id: Int
     ): Call<ProdukResponse>
+
+    //Detail Produk
+    @GET("detail_produk")
+    fun detail_produk(
+        @Query("id") id: String
+    ): Call<DetailProdukResponse>
 
     //=======================END PRODUK==================
     //=======================ADMIN==================
@@ -143,5 +171,60 @@ interface ApiService {
     @Headers("Content-Type: application/json")
     @POST("tambah_transaksi")
     fun tambah_transaksi(@Body post: PostPesanan): Call<PesananResponse>
+
+    //selesaikan pesanan
+    @FormUrlEncoded
+    @POST("pesanan_selesai")
+    fun pesanan_selesai(
+        @Field("id") id: Int): Call<PostProdukResponse>
+
+    //get pesanan sesuai id
+    @GET("get_pesanan_id")
+    fun get_pesanan_id(
+        @Query("id_user") id_user: Int
+    ): Call<ListPesananResponse>
+
+    //get pesanan bulanan
+    @GET("get_pesanan_owner")
+    fun get_pesanan_owner(): Call<ListPesananResponse>
+
+    @FormUrlEncoded
+    @POST("cetak_nota")
+    fun cetak_nota(
+        @Field("id") id: Int,
+        @Field("nomorpesanan") nomorpesanan: String
+    ): Call<NotaResponse>
+
+    //=======================GAJI==================
+    //get gaji
+    @GET("get_gaji")
+    fun get_gaji(): Call<GajiResponse>
+
+    //get gaji admin
+    @GET("gaji_admin")
+    fun gaji_admin(
+        @Query("id_user") id_user: Int
+    ): Call<GajiAdminResponse>
+
+    //riwayat gaji admin
+    @GET("riwayat_gaji_admin")
+    fun riwayat_gaji_admin(
+        @Query("id_user") id_user: Int
+    ): Call<RiwayatGajiResponse>
+
+
+    //tambah gaji
+    @FormUrlEncoded
+    @POST("set_gaji")
+    fun set_gaji(
+        @Field("gaji") gaji: Int,
+        @Field("bonus") bonus: Int
+    ): Call<PostProdukResponse>
+
+    @Headers("Content-Type: application/json")
+    @POST("bayar_gaji")
+    fun bayar_gaji(@Body post: PostBayarGaji): Call<PostProdukResponse>
+
+    //=======================END GAJI==================
 
 }

@@ -1,6 +1,7 @@
 package com.kasirandrea.kasirandrea.kasir.model.pesanan
 
 import com.google.gson.annotations.SerializedName
+import java.sql.Timestamp
 
 
 data class PesananModel(
@@ -27,7 +28,7 @@ data class PesananModel(
     val telepon: String? = null,
 
     @field:SerializedName("created_at")
-    val createdAt: String? = null,
+    val createdAt: Timestamp? = null,
 
     @field:SerializedName("id_user")
     val idUser: Int? = null,
@@ -37,6 +38,8 @@ data class PesananModel(
 
     @field:SerializedName("id")
     val id: Int? = null,
+    @field:SerializedName("is_status")
+    val is_status: Int? = null,
 
     @field:SerializedName("alamat")
     val alamat: String? = null

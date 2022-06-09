@@ -41,4 +41,15 @@ class SessionManager(private val context: Context?) {
     {
         return Pref?.getInt(isIduser,0)
     }
+
+    private val isNama = "nama"
+    fun setNama(check: String){
+        editor?.putString(isNama,check)
+        editor?.commit()
+    }
+
+    fun getNama():String?
+    {
+        return Pref?.getString(isNama,"")
+    }
 }

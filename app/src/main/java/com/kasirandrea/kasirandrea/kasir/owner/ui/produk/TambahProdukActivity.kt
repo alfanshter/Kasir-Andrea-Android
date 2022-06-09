@@ -73,6 +73,15 @@ class TambahProdukActivity : AppCompatActivity(),AnkoLogger {
             pilihfile()
         }
 
+        binding.btnbatalkan.setOnClickListener {
+            finish()
+        }
+        binding.btnback.setOnClickListener {
+            finish()
+        }
+
+
+
 
 
     }

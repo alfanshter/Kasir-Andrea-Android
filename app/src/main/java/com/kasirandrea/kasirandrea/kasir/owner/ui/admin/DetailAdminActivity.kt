@@ -10,7 +10,9 @@ import com.kasirandrea.kasirandrea.R
 import com.kasirandrea.kasirandrea.databinding.ActivityDetailAdminBinding
 import com.kasirandrea.kasirandrea.databinding.ActivityTambahAdminBinding
 import com.kasirandrea.kasirandrea.kasir.model.admin.AdminModel
+import com.kasirandrea.kasirandrea.kasir.owner.ui.gaji.GajiAdminActivity
 import com.kasirandrea.kasirandrea.kasir.webservice.ApiClient
+import org.jetbrains.anko.startActivity
 
 class DetailAdminActivity : AppCompatActivity() {
     var adminmodel : AdminModel? = null
@@ -40,5 +42,10 @@ class DetailAdminActivity : AppCompatActivity() {
         binding.nohp.text = adminmodel!!.telepon.toString()
         binding.txtemail.text = adminmodel!!.username.toString()
 
+        binding.btnlihatgaji.setOnClickListener {
+            val gson = Gson()
+            val noteJson = gson.toJson(adminmodel)
+            startActivity<GajiAdminActivity>("adminmodel" to noteJson)
+        }
     }
 }

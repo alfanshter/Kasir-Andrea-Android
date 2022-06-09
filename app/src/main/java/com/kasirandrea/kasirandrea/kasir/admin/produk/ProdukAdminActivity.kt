@@ -54,6 +54,10 @@ class ProdukAdminActivity : AppCompatActivity(),AnkoLogger {
                 sheet.show(supportFragmentManager, "KeranjangFragment")
         }
 
+        binding.btnscan.setOnClickListener {
+            startActivity<QrCodeProdukActivity>()
+        }
+
     }
 
 
@@ -120,7 +124,7 @@ class ProdukAdminActivity : AppCompatActivity(),AnkoLogger {
             val serchtext: String =
                 searchTerm!!.substring(0, 1).toUpperCase() + searchTerm.substring(1)
 
-            api.search_produk(serchtext).enqueue(object : Callback<ProdukResponse>{
+            api.search_produk(serchtext.toInt()).enqueue(object : Callback<ProdukResponse>{
                 override fun onResponse(
                     call: Call<ProdukResponse>,
                     response: Response<ProdukResponse>

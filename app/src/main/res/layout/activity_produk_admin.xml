@@ -61,17 +61,19 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="20dp"
+                android:queryHint="Masukkan kode produk"
                 android:layout_marginRight="10dp"
-                android:layout_toLeftOf="@id/btntambah"
-                android:background="@drawable/edtbackground" />
+                android:layout_toLeftOf="@id/btnscan"
+                android:background="@drawable/edtbackground"
+                android:inputType="number" />
 
             <ImageView
-                android:id="@+id/btntambah"
+                android:id="@+id/btnscan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:background="@drawable/btnadd" />
+                android:background="@drawable/imgbarcode" />
         </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
