@@ -81,23 +81,13 @@
                 android:layout_marginBottom="23dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/txtinisial_nama"
-                    android:layout_width="57dp"
-                    android:layout_height="57dp"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="21dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/oval"
-                    android:fontFamily="@font/roboto_medium"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="A"
-                    android:textColor="@color/white"
-                    android:textSize="24dp"
-                    android:textStyle="bold" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    app:civ_border_width="2dp"
+                    app:civ_border_color="#FF000000"/>
+
 
                 <TextView
                     android:layout_width="wrap_content"

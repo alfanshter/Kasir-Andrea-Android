@@ -10,6 +10,9 @@ data class UsersModel(
     @field:SerializedName("nama")
     val nama: String? = null,
 
+    @field:SerializedName("foto")
+    val foto: String? = null,
+
     @field:SerializedName("updated_at")
     val updatedAt: String? = null,
 

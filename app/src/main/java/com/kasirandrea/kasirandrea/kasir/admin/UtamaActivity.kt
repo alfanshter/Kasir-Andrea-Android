@@ -10,9 +10,12 @@ import com.kasirandrea.kasirandrea.databinding.ActivityUtamaBinding
 import com.kasirandrea.kasirandrea.kasir.admin.listpesanan.ListPesananActivity
 import com.kasirandrea.kasirandrea.kasir.admin.produk.ProdukAdminActivity
 import com.kasirandrea.kasirandrea.kasir.auth.LoginActivity
+import com.kasirandrea.kasirandrea.kasir.model.UsersResponse
 import com.kasirandrea.kasirandrea.kasir.model.produk.PostProdukResponse
 import com.kasirandrea.kasirandrea.kasir.session.SessionManager
 import com.kasirandrea.kasirandrea.kasir.webservice.ApiClient
+import com.kasirandrea.kasirandrea.kasir.webservice.Constant
+import com.squareup.picasso.Picasso
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.jetbrains.anko.startActivity
@@ -39,6 +42,8 @@ class UtamaActivity : AppCompatActivity(),AnkoLogger {
             startActivity<ProdukAdminActivity>()
         }
 
+        Picasso.get().load(Constant.folder_foto+sessionManager.getFoto()!!).fit().centerCrop().into(binding.foto)
+        binding.txtadmin.text = sessionManager.getNama()
         binding.btnlistpesanan.setOnClickListener {
             startActivity<ListPesananActivity>()
         }
@@ -49,7 +54,33 @@ class UtamaActivity : AppCompatActivity(),AnkoLogger {
 
         binding.txtnama.text = sessionManager.getNama()
 
+        profil()
 
+    }
+
+    fun profil(){
+        api.profil_admin(sessionManager.getid_user()!!.toInt()).enqueue(object : Callback<UsersResponse> {
+            override fun onResponse(
+                call: Call<UsersResponse>,
+                response: Response<UsersResponse>
+            ) {
+                if (response.isSuccessful){
+                    if (response.body()!!.status == 1){
+                        Picasso.get().load(Constant.folder_foto+response.body()!!.data!!.foto).fit().centerCrop().into(binding.foto)
+                        binding.txtadmin.text = response.body()!!.data!!.nama
+                        sessionManager.setFoto(response.body()!!.data!!.foto!!)
+                        sessionManager.setNama(response.body()!!.data!!.nama!!)
+
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<UsersResponse>, t: Throwable) {
+                info { "dinda ${t.message}" }
+                toast("Kesalahan jaringan")
+            }
+
+        })
     }
     fun logout(){
         loading(true)

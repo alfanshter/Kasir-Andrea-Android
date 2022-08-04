@@ -1,6 +1,7 @@
 package com.kasirandrea.kasirandrea.kasir.webservice
 
 import com.kasirandrea.kasirandrea.kasir.LoginResponse
+import com.kasirandrea.kasirandrea.kasir.model.UsersResponse
 import com.kasirandrea.kasirandrea.kasir.model.admin.AdminResponse
 import com.kasirandrea.kasirandrea.kasir.model.gaji.GajiAdminResponse
 import com.kasirandrea.kasirandrea.kasir.model.gaji.GajiResponse
@@ -62,6 +63,10 @@ interface ApiService {
         @Part("stok") stok: RequestBody,
         @Part("id") id: RequestBody,
         @Part("oldImage") oldImage: RequestBody,
+        @Part("jumlah_grosir") jumlah_grosir: RequestBody,
+        @Part("harga_grosir") harga_grosir: RequestBody,
+        @Part("diskon") diskon: RequestBody,
+        @Part("modal") modal: RequestBody
     ): Call<PostProdukResponse>
 
     //EDIT PRODUK TANPA FOTO
@@ -74,6 +79,10 @@ interface ApiService {
         @Part("stok") stok: RequestBody,
         @Part("id") id: RequestBody,
         @Part("oldImage") oldImage: RequestBody,
+        @Part("jumlah_grosir") jumlah_grosir: RequestBody,
+        @Part("harga_grosir") harga_grosir: RequestBody,
+        @Part("diskon") diskon: RequestBody,
+        @Part("modal") modal: RequestBody
     ): Call<PostProdukResponse>
 
     //EDIT PRODUK TANPA FOTO
@@ -125,6 +134,13 @@ interface ApiService {
     //Admin
     @GET("get_admin")
     fun get_admin(): Call<AdminResponse>
+
+    //Admin
+    @GET("profil_admin")
+    fun profil_admin(
+        @Query("id") id : Int
+    ): Call<UsersResponse>
+
 
     //Pencarian Admin
     @GET("search_admin")

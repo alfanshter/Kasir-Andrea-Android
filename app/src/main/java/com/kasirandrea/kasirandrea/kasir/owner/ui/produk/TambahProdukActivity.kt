@@ -52,6 +52,10 @@ class TambahProdukActivity : AppCompatActivity(),AnkoLogger {
             binding.edtdeskripsi.setText(produkmodel!!.deskripsi)
             binding.edtharga.setText(produkmodel!!.harga.toString())
             binding.edtstok.setText(produkmodel!!.stok)
+            binding.edtmodal.setText(produkmodel!!.modal.toString())
+            binding.edtdiskon.setText(produkmodel!!.diskon.toString())
+            binding.edtjumlahgrosir.setText(produkmodel!!.jumlah_grosir.toString())
+            binding.edthargagrosir.setText(produkmodel!!.harga_grosir.toString())
             Picasso.get().load(Constant.folder_foto+produkmodel!!.foto).fit().centerCrop().into(binding.imgfoto)
             binding.btnsimpan.setOnClickListener {
                 if (data!=null){
@@ -198,9 +202,16 @@ class TambahProdukActivity : AppCompatActivity(),AnkoLogger {
         val edt_deskripsi = binding.edtdeskripsi.text.toString().trim()
         val edt_harga = binding.edtharga.text.toString().trim()
         val edt_stok = binding.edtstok.text.toString().trim()
+        val edt_harga_grosir = binding.edthargagrosir.text.toString().trim()
+        val edt_jumlah_grosir = binding.edtjumlahgrosir.text.toString().trim()
+        val edt_diskon = binding.edtdiskon.text.toString().trim()
+        val edt_modal = binding.edtmodal.text.toString().trim()
+
 
         if (edt_nama.isNotEmpty() && edt_deskripsi.isNotEmpty() && edt_harga.isNotEmpty()
-            && edt_stok.isNotEmpty()
+            && edt_stok.isNotEmpty() &&  edt_harga_grosir.isNotEmpty() &&
+            edt_jumlah_grosir.isNotEmpty() && edt_diskon.isNotEmpty()
+
         ) {
             loading(true)
             val f: File = File(cacheDir, "foto")
@@ -211,6 +222,22 @@ class TambahProdukActivity : AppCompatActivity(),AnkoLogger {
             val reqFile = RequestBody.create(MediaType.parse("image/*"), data)
             val body = MultipartBody.Part.createFormData("foto", f.name, reqFile)
 
+            val harga_grosir: RequestBody = RequestBody.create(
+                MediaType.parse("text/plain"),
+                edt_harga_grosir
+            )
+            val jumlah_grosir: RequestBody = RequestBody.create(
+                MediaType.parse("text/plain"),
+                edt_jumlah_grosir
+            )
+            val diskon: RequestBody = RequestBody.create(
+                MediaType.parse("text/plain"),
+                edt_diskon
+            )
+            val modal: RequestBody = RequestBody.create(
+                MediaType.parse("text/plain"),
+                edt_modal
+            )
             val nama: RequestBody = RequestBody.create(
                 MediaType.parse("text/plain"),
                 edt_nama
@@ -241,7 +268,7 @@ class TambahProdukActivity : AppCompatActivity(),AnkoLogger {
                 produkmodel!!.foto.toString()
             )
 
-            api.update_produk(body,nama,deskripsi,harga,stok,id,oldImage).enqueue(object : Callback<PostProdukResponse>{
+            api.update_produk(body,nama,deskripsi,harga,stok,id,oldImage,jumlah_grosir, harga_grosir, diskon, modal).enqueue(object : Callback<PostProdukResponse>{
                 override fun onResponse(
                     call: Call<PostProdukResponse>,
                     response: Response<PostProdukResponse>
@@ -291,15 +318,38 @@ class TambahProdukActivity : AppCompatActivity(),AnkoLogger {
         val edt_deskripsi = binding.edtdeskripsi.text.toString().trim()
         val edt_harga = binding.edtharga.text.toString().trim()
         val edt_stok = binding.edtstok.text.toString().trim()
+        val edt_harga_grosir = binding.edthargagrosir.text.toString().trim()
+        val edt_jumlah_grosir = binding.edtjumlahgrosir.text.toString().trim()
+        val edt_diskon = binding.edtdiskon.text.toString().trim()
+        val edt_modal = binding.edtmodal.text.toString().trim()
+
 
         if (edt_nama.isNotEmpty() && edt_deskripsi.isNotEmpty() && edt_harga.isNotEmpty()
-            && edt_stok.isNotEmpty()
+            && edt_stok.isNotEmpty() && edt_harga_grosir.isNotEmpty() && edt_jumlah_grosir.isNotEmpty()
+            && edt_diskon.isNotEmpty() && edt_modal.isNotEmpty()
         ) {
             loading(true)
 
             val nama: RequestBody = RequestBody.create(
                 MediaType.parse("text/plain"),
                 edt_nama
+            )
+
+            val harga_grosir: RequestBody = RequestBody.create(
+                MediaType.parse("text/plain"),
+                edt_harga_grosir
+            )
+            val jumlah_grosir: RequestBody = RequestBody.create(
+                MediaType.parse("text/plain"),
+                edt_jumlah_grosir
+            )
+            val diskon: RequestBody = RequestBody.create(
+                MediaType.parse("text/plain"),
+                edt_diskon
+            )
+            val modal: RequestBody = RequestBody.create(
+                MediaType.parse("text/plain"),
+                edt_modal
             )
 
             val deskripsi: RequestBody = RequestBody.create(
@@ -327,7 +377,7 @@ class TambahProdukActivity : AppCompatActivity(),AnkoLogger {
                 produkmodel!!.foto.toString()
             )
 
-            api.update_produk_foto(nama,deskripsi,harga,stok,id,oldImage).enqueue(object : Callback<PostProdukResponse>{
+            api.update_produk_foto(nama,deskripsi,harga,stok,id,oldImage,jumlah_grosir, harga_grosir, diskon, modal).enqueue(object : Callback<PostProdukResponse>{
                 override fun onResponse(
                     call: Call<PostProdukResponse>,
                     response: Response<PostProdukResponse>

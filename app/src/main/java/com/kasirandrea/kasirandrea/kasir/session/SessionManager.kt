@@ -52,4 +52,15 @@ class SessionManager(private val context: Context?) {
     {
         return Pref?.getString(isNama,"")
     }
+
+    private val isFoto = "foto"
+    fun setFoto(check: String){
+        editor?.putString(isFoto,check)
+        editor?.commit()
+    }
+
+    fun getFoto():String?
+    {
+        return Pref?.getString(isFoto,"")
+    }
 }

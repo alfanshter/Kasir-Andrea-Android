@@ -16,6 +16,8 @@ import com.kasirandrea.kasirandrea.kasir.model.admin.AdminModel
 import com.kasirandrea.kasirandrea.kasir.model.produk.PostProdukResponse
 import com.kasirandrea.kasirandrea.kasir.owner.ui.gaji.GajiAdminActivity
 import com.kasirandrea.kasirandrea.kasir.webservice.ApiClient
+import com.kasirandrea.kasirandrea.kasir.webservice.Constant
+import com.squareup.picasso.Picasso
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.jetbrains.anko.startActivity
@@ -46,7 +48,7 @@ class DetailAdminActivity : AppCompatActivity(),AnkoLogger {
         val gson = Gson()
         adminmodel = gson.fromJson(intent.getStringExtra("admin"), AdminModel::class.java)
 
-        binding.txtinisialNama.text = adminmodel!!.nama!!.subSequence(0,1)
+        Picasso.get().load(Constant.folder_foto+adminmodel!!.foto).fit().centerCrop().into(binding.profileImage)
         binding.txtnama.text = adminmodel!!.nama.toString()
         binding.txtalamat.text = adminmodel!!.alamat.toString()
         binding.nohp.text = adminmodel!!.telepon.toString()
