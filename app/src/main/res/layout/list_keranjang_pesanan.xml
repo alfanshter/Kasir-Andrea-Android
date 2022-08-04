@@ -36,7 +36,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:fontFamily="@font/roboto_medium"
-            android:text="ROCKTON PENGERAS SEMEN / PENGUAT BETON"
+            android:text="-"
             android:textColor="@color/black"
             android:textSize="15dp" />
 
@@ -49,7 +49,21 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="5dp"
             android:fontFamily="@font/roboto_medium"
-            android:text="1 x 78.000"
+            android:text="-"
+            android:textColor="@color/black"
+            android:textSize="13dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="2dp"
+            android:id="@+id/txtmodal"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="-"
+            android:visibility="gone"
             android:textColor="@color/black"
             android:textSize="13dp" />
     </LinearLayout>

@@ -13,6 +13,7 @@ import com.kasirandrea.kasirandrea.databinding.ActivityListPesananBinding
 import com.kasirandrea.kasirandrea.databinding.FragmentTransaksiOwnerBinding
 import com.kasirandrea.kasirandrea.kasir.adapter.listpesanan.ListPesananAdapter
 import com.kasirandrea.kasirandrea.kasir.admin.detailpesanan.DetailPesananActivity
+import com.kasirandrea.kasirandrea.kasir.model.penghasilan.PenghasilanResponse
 import com.kasirandrea.kasirandrea.kasir.model.pesanan.ListPesananResponse
 import com.kasirandrea.kasirandrea.kasir.model.pesanan.PesananModel
 import com.kasirandrea.kasirandrea.kasir.session.SessionManager
@@ -26,6 +27,8 @@ import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.DecimalFormat
+import java.text.NumberFormat
 
 class TransaksiOwnerFragment : Fragment(),AnkoLogger {
     lateinit var sessionManager: SessionManager
@@ -55,6 +58,37 @@ class TransaksiOwnerFragment : Fragment(),AnkoLogger {
     override fun onStart() {
         super.onStart()
         get_keranjang()
+        penghasilan()
+    }
+
+    fun penghasilan(){
+        api.penghasilan_bulanan().enqueue(object : Callback<PenghasilanResponse> {
+            override fun onResponse(
+                call: Call<PenghasilanResponse>,
+                response: Response<PenghasilanResponse>
+            ) {
+                try {
+                    if (response.isSuccessful) {
+                        val notesList = mutableListOf<PesananModel>()
+                        val data = response.body()
+                        val formatter: NumberFormat = DecimalFormat("#,###")
+                        binding.txtpenghasilan.text = "Rp. ${formatter.format(data!!.harga)}"
+                        binding.txtmodal.text = "Rp. ${formatter.format(data.modal)}"
+
+                    } else {
+                        toast("gagal mendapatkan response")
+                    }
+                } catch (e: Exception) {
+                    info { "dinda ${e.message}" }
+                }
+            }
+
+            override fun onFailure(call: Call<PenghasilanResponse>, t: Throwable) {
+                info { "dinda ${t.message}" }
+            }
+
+        })
+
     }
 
     fun get_keranjang(){

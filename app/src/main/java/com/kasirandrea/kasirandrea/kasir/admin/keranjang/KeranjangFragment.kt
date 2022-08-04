@@ -39,8 +39,8 @@ import java.text.DecimalFormat
 import java.text.NumberFormat
 
 
-class KeranjangFragment : SuperBottomSheetFragment(),AnkoLogger {
-    lateinit var binding : FragmentKeranjangBinding
+class KeranjangFragment : SuperBottomSheetFragment(), AnkoLogger {
+    lateinit var binding: FragmentKeranjangBinding
     private lateinit var mAdapter: KeranjangAdapter
     var api = ApiClient.instance()
     lateinit var progressDialog: ProgressDialog
@@ -51,7 +51,7 @@ class KeranjangFragment : SuperBottomSheetFragment(),AnkoLogger {
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_keranjang,container,false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_keranjang, container, false)
         binding.lifecycleOwner = this
         progressDialog = ProgressDialog(requireActivity())
         sessionManager = SessionManager(requireContext().applicationContext)
@@ -61,7 +61,7 @@ class KeranjangFragment : SuperBottomSheetFragment(),AnkoLogger {
             LinearLayoutManager.VERTICAL
 
 
-        return  binding.root
+        return binding.root
 
     }
 
@@ -72,7 +72,7 @@ class KeranjangFragment : SuperBottomSheetFragment(),AnkoLogger {
 
     }
 
-    fun get_keranjang(){
+    fun get_keranjang() {
         api.get_keranjang(sessionManager.getid_user()!!)
             .enqueue(object : Callback<KeranjangResponse> {
                 override fun onResponse(
@@ -88,8 +88,11 @@ class KeranjangFragment : SuperBottomSheetFragment(),AnkoLogger {
                                 mAdapter = KeranjangAdapter(notesList)
                                 binding.rvKeranjang.adapter = mAdapter
 
-                                mAdapter.setDialog(object : KeranjangAdapter.Dialog{
-                                    override fun onClick(position: Int, KeranjangModel: KeranjangModel) {
+                                mAdapter.setDialog(object : KeranjangAdapter.Dialog {
+                                    override fun onClick(
+                                        position: Int,
+                                        KeranjangModel: KeranjangModel
+                                    ) {
                                         val gson = Gson()
                                         val noteJson = gson.toJson(KeranjangModel)
 //                                        startActivity<OrderAdminActivity>("produk" to noteJson)
@@ -100,8 +103,9 @@ class KeranjangFragment : SuperBottomSheetFragment(),AnkoLogger {
                                         position: Int,
                                         KeranjangModel: KeranjangModel
                                     ) {
-                                        tambah_keranjang(KeranjangModel.idProduk!!,
-                                            KeranjangModel.harga!!
+                                        tambah_keranjang(
+                                            KeranjangModel.idProduk!!,
+                                            KeranjangModel.harga!!, KeranjangModel.harga_modal!!
                                         )
                                     }
 
@@ -124,7 +128,7 @@ class KeranjangFragment : SuperBottomSheetFragment(),AnkoLogger {
                                 })
                                 mAdapter.notifyDataSetChanged()
                             }
-                            
+
                         } else {
                             toast("gagal mendapatkan response")
                         }
@@ -141,28 +145,36 @@ class KeranjangFragment : SuperBottomSheetFragment(),AnkoLogger {
 
     }
 
-    fun tambah_keranjang(id_produk: Int, harga : Int){
+    fun tambah_keranjang(id_produk: Int, harga: Int, harga_modal: Int) {
         loading(true)
-        api.tambah_keranjang(PostKeranjang(id_produk,harga,1,sessionManager.getid_user())).enqueue(object : Callback<PostProdukResponse> {
+        api.tambah_keranjang(
+            PostKeranjang(
+                id_produk,
+                harga,
+                1,
+                sessionManager.getid_user(),
+                harga_modal
+            )
+        ).enqueue(object : Callback<PostProdukResponse> {
             override fun onResponse(
                 call: Call<PostProdukResponse>,
                 response: Response<PostProdukResponse>
             ) {
                 try {
-                    if (response.isSuccessful){
-                        if (response.body()!!.status == 1){
+                    if (response.isSuccessful) {
+                        if (response.body()!!.status == 1) {
                             loading(false)
                             onStart()
-                         }else if (response.body()!!.status ==2){
+                        } else if (response.body()!!.status == 2) {
                             loading(false)
                             toast("jangan kosongi kolom")
-                        }else{
+                        } else {
                             loading(false)
                             toast("silahkan ulangi lagi")
 
                         }
                     }
-                }catch (e :Exception){
+                } catch (e: Exception) {
                     loading(false)
                     info { "dinda cath ${e.message}" }
 
@@ -181,28 +193,28 @@ class KeranjangFragment : SuperBottomSheetFragment(),AnkoLogger {
 
     }
 
-    fun kurang_keranjang(id: Int, jumlah : Int){
+    fun kurang_keranjang(id: Int, jumlah: Int) {
         loading(true)
-        api.kurang_keranjang(id,jumlah).enqueue(object : Callback<PostProdukResponse> {
+        api.kurang_keranjang(id, jumlah).enqueue(object : Callback<PostProdukResponse> {
             override fun onResponse(
                 call: Call<PostProdukResponse>,
                 response: Response<PostProdukResponse>
             ) {
                 try {
-                    if (response.isSuccessful){
-                        if (response.body()!!.status == 1){
+                    if (response.isSuccessful) {
+                        if (response.body()!!.status == 1) {
                             loading(false)
                             onStart()
-                        }else if (response.body()!!.status ==2){
+                        } else if (response.body()!!.status == 2) {
                             loading(false)
                             toast("jangan kosongi kolom")
-                        }else{
+                        } else {
                             loading(false)
                             toast("silahkan ulangi lagi")
 
                         }
                     }
-                }catch (e :Exception){
+                } catch (e: Exception) {
                     loading(false)
                     info { "dinda cath ${e.message}" }
 
@@ -221,7 +233,7 @@ class KeranjangFragment : SuperBottomSheetFragment(),AnkoLogger {
 
     }
 
-    fun hapus_keranjang(id: Int){
+    fun hapus_keranjang(id: Int) {
         loading(true)
         api.hapus_keranjang(id).enqueue(object : Callback<PostProdukResponse> {
             override fun onResponse(
@@ -229,20 +241,20 @@ class KeranjangFragment : SuperBottomSheetFragment(),AnkoLogger {
                 response: Response<PostProdukResponse>
             ) {
                 try {
-                    if (response.isSuccessful){
-                        if (response.body()!!.status == 1){
+                    if (response.isSuccessful) {
+                        if (response.body()!!.status == 1) {
                             loading(false)
                             onStart()
-                        }else if (response.body()!!.status ==2){
+                        } else if (response.body()!!.status == 2) {
                             loading(false)
                             toast("jangan kosongi kolom")
-                        }else{
+                        } else {
                             loading(false)
                             toast("silahkan ulangi lagi")
 
                         }
                     }
-                }catch (e :Exception){
+                } catch (e: Exception) {
                     loading(false)
                     info { "dinda cath ${e.message}" }
 
@@ -271,50 +283,55 @@ class KeranjangFragment : SuperBottomSheetFragment(),AnkoLogger {
         }
     }
 
-    fun total_belanja(){
-        api.total_belanja(sessionManager.getid_user()!!).enqueue(object : Callback<TotalBelanjaResponse> {
-            override fun onResponse(
-                call: Call<TotalBelanjaResponse>,
-                response: Response<TotalBelanjaResponse>
-            ) {
-                try {
-                    if (response.isSuccessful){
-                        val formatter: NumberFormat = DecimalFormat("#,###")
-                        val myNumber = response.body()!!.totalBelanja
-                        val harga: String = formatter.format(myNumber)
-                        binding.txttotalharga.text = "Rp. ${harga}"
-                        binding.btnproses.setOnClickListener {
-                            proses(response.body()!!.totalBelanja!!)
+    fun total_belanja() {
+        api.total_belanja(sessionManager.getid_user()!!)
+            .enqueue(object : Callback<TotalBelanjaResponse> {
+                override fun onResponse(
+                    call: Call<TotalBelanjaResponse>,
+                    response: Response<TotalBelanjaResponse>
+                ) {
+                    try {
+                        if (response.isSuccessful) {
+                            val formatter: NumberFormat = DecimalFormat("#,###")
+                            val myNumber = response.body()!!.totalBelanja
+                            val harga: String = formatter.format(myNumber)
+                            binding.txttotalharga.text = "Rp. ${harga}"
+                            binding.btnproses.setOnClickListener {
+                                proses(response.body()!!.totalBelanja!!, response.body()!!.modal!!)
+                            }
                         }
+                    } catch (e: Exception) {
+                        loading(false)
+                        info { "dinda cath ${e.message}" }
+
                     }
-                }catch (e :Exception){
-                    loading(false)
-                    info { "dinda cath ${e.message}" }
 
                 }
 
-            }
+                override fun onFailure(call: Call<TotalBelanjaResponse>, t: Throwable) {
+                    loading(false)
+                    info { "dinda failure ${t.message}" }
+                    toast("silahkan hubungi developer")
 
-            override fun onFailure(call: Call<TotalBelanjaResponse>, t: Throwable) {
-                loading(false)
-                info { "dinda failure ${t.message}" }
-                toast("silahkan hubungi developer")
+                }
 
-            }
-
-        })
+            })
 
     }
 
-    fun proses(total_belanja : Int){
-        startActivity<DataPembeliActivity>("total_belanja" to total_belanja)
+    fun proses(total_belanja: Int, modal: Int) {
+        startActivity<DataPembeliActivity>(
+            "total_belanja" to total_belanja,
+            "modal" to modal
+        )
     }
-    override fun getCornerRadius() = requireContext().resources.getDimension(R.dimen.super_bottom_sheet_radius)
+
+    override fun getCornerRadius() =
+        requireContext().resources.getDimension(R.dimen.super_bottom_sheet_radius)
 
     override fun getStatusBarColor() = Color.BLACK
 
     override fun isSheetAlwaysExpanded(): Boolean = true
-
 
 
 }

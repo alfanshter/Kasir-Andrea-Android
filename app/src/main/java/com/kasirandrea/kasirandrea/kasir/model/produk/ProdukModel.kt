@@ -11,6 +11,18 @@ data class ProdukModel(
     @field:SerializedName("harga")
     val harga: Int? = null,
 
+    @field:SerializedName("modal")
+    val modal: Int? = null,
+
+    @field:SerializedName("harga_grosir")
+    val harga_grosir: Int? = null,
+
+    @field:SerializedName("jumlah_grosir")
+    val jumlah_grosir: Int? = null,
+
+    @field:SerializedName("diskon")
+    val diskon: Int? = null,
+
     @field:SerializedName("foto")
     val foto: String? = null,
 

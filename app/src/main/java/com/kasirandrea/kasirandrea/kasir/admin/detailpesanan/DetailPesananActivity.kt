@@ -35,6 +35,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import com.google.gson.Gson
@@ -69,18 +70,9 @@ class DetailPesananActivity : AppCompatActivity(), AnkoLogger{
     private val api = ApiClient.instance()
     lateinit var sessionManager: SessionManager
     lateinit var progressDialog: ProgressDialog
-    var nomorpesanan: String? = null
-    var jumlahhalaman: Int? = null
-    var listdataprintall = ArrayList<KeranjangModel>()
     private lateinit var mAdapter: KeranjangSelesaiAdapter
-    var informationArray = arrayOf("Name", "Perusahaan", "Alamat")
-
-//    private lateinit var mAdapter: KeranjangSelesaiAdapter
 
     lateinit var binding: ActivityDetailPesananBinding
-
-    //printer blueetoh
-    internal var printing : Printing? = null
 
     var pesanan: PesananModel? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -112,6 +104,7 @@ class DetailPesananActivity : AppCompatActivity(), AnkoLogger{
         binding.txttotalharga.text = "Rp. ${formatter.format(pesanan!!.hargaTotal)}"
         binding.txtkalender.text = currentDate.toString()
         binding.txtongkoskirim.text = "Rp. ${formatter.format(pesanan!!.ongkir)}"
+
 
         if (pesanan!!.is_status == 0){
             binding.btnselesai.visibility = View.VISIBLE
@@ -159,10 +152,51 @@ class DetailPesananActivity : AppCompatActivity(), AnkoLogger{
                             val data = response.body()
                             for (hasil in data!!.data!!) {
                                 notesList.add(hasil)
+
                                 mAdapter =
                                     KeranjangSelesaiAdapter(notesList)
+
                                 binding.rvpesanan.adapter = mAdapter
+                                mAdapter.setDialog(object : KeranjangSelesaiAdapter.Dialog{
+                                    override fun onClick(
+                                        position: Int,
+                                        KeranjangModel: KeranjangModel
+                                    ) {
+
+                                    }
+
+                                    override fun onOwner(
+                                        position: Int,
+                                        KeranjangModel: KeranjangModel,
+                                        modal: TextView
+                                    ) {
+                                        if (sessionManager.getLoginowner()==true){
+                                            val formatter: NumberFormat = DecimalFormat("#,###")
+                                            modal.visibility = View.VISIBLE
+                                            modal.text = "Modal : Rp.  ${formatter.format(KeranjangModel.harga_modal)}"
+
+                                        }
+
+                                    }
+
+                                })
+
                                 mAdapter.notifyDataSetChanged()
+                            }
+
+
+                            if (sessionManager.getLoginowner()==true){
+                                val formatter: NumberFormat = DecimalFormat("#,###")
+
+                                binding.lnmodal.visibility = View.VISIBLE
+                                binding.txtpenghasilan.visibility = View.VISIBLE
+                                binding.viewpenghasilan.visibility = View.VISIBLE
+                                binding.lnkeuntungan.visibility = View.VISIBLE
+                                binding.txtmodal.text = "Rp. ${formatter.format(data.harga_modal!!.hargaModal!!.toInt())}"
+                                var modal = data.harga_modal.hargaModal!!.toInt()
+                                var hargatotal = pesanan!!.harga
+                                var keuntungan = hargatotal!! - modal
+                                binding.txtkeuntungan.text = "Rp. ${formatter.format(keuntungan)}"
                             }
 
                         } else {

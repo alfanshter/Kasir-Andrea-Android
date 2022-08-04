@@ -26,5 +26,7 @@ data class PostPesanan(
 	val kurir: String? = null,
 
 	@field:SerializedName("alamat")
-	val alamat: String? = null
+	val alamat: String? = null,
+	@field:SerializedName("modal")
+	val modal: Int? = null
 )

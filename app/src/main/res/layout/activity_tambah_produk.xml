@@ -177,7 +177,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/imgharga" />
+                    android:background="@drawable/imgstok" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -192,6 +192,159 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtstok"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:hint="Atur"
+                    android:inputType="number"
+                    android:paddingLeft="10dp"
+                    android:textSize="13dp" />
+
+
+            </RelativeLayout>
+
+            <!--            Grosir-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp">
+
+                <ImageView
+                    android:id="@+id/imggrosir"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/imggrosir" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/imggrosir"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Grosir"
+                    android:id="@+id/txtnamagrosir"
+                    android:textColor="@color/black"
+                    android:textSize="17dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="end"
+                    android:layout_toRightOf="@id/txtnamagrosir"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtjumlahgrosir"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:hint="Min"
+                        android:inputType="number"
+                        android:paddingLeft="10dp"
+                        android:textSize="13dp" />
+
+                    <View
+                        android:layout_width="19dp"
+                        android:layout_height="1dp"
+                        android:background="#A0A0A0"
+                        android:layout_gravity="center"
+                        />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edthargagrosir"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:hint="harga"
+                        android:inputType="number"
+                        android:paddingLeft="10dp"
+                        android:textSize="13dp" />
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <!--            Diskon-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp">
+
+                <ImageView
+                    android:id="@+id/imgdiskon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/imgharga" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/imgdiskon"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Diskon"
+                    android:textColor="@color/black"
+                    android:textSize="17dp" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtdiskon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:hint="Atur"
+                    android:inputType="number"
+                    android:paddingLeft="10dp"
+                    android:textSize="13dp" />
+
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp">
+
+                <ImageView
+                    android:id="@+id/imgmodal"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/ic_baseline_attach_money_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/imgmodal"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Modal"
+                    android:textColor="@color/black"
+                    android:textSize="17dp" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtmodal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"

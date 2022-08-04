@@ -1,8 +1,10 @@
 package com.kasirandrea.kasirandrea.kasir.admin.produk
 
 import android.app.ProgressDialog
+import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.google.gson.Gson
 import com.kasirandrea.kasirandrea.R
@@ -33,6 +35,7 @@ class OrderAdminActivity : AppCompatActivity(),AnkoLogger {
     lateinit var progressDialog: ProgressDialog
     lateinit var sessionManager: SessionManager
     var counter = 0
+    var diskon = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_order_admin)
@@ -45,12 +48,19 @@ class OrderAdminActivity : AppCompatActivity(),AnkoLogger {
         binding.txtnama.text = produkmodel!!.nama
         val formatter: NumberFormat = DecimalFormat("#,###")
         val harga = produkmodel!!.harga
+        diskon = harga!! - produkmodel!!.diskon!!
 
         binding.txtharga.text = "Rp. ${formatter.format(harga)}"
         binding.txtstok.text = "${produkmodel!!.stok} Produk"
         binding.txtdeskripsi.text = produkmodel!!.deskripsi
+        binding.txtgrosir.text = "Harga Grosir Rp. ${formatter.format(produkmodel!!.harga_grosir)} (min ${produkmodel!!.jumlah_grosir} pcs)"
         Picasso.get().load(Constant.folder_foto+produkmodel!!.foto).centerCrop().fit().into(binding.imgreview)
 
+        if (produkmodel!!.diskon!! > 0 ){
+            binding.txtharga.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+            binding.txtdiskon.visibility = View.VISIBLE
+            binding.txtdiskon.text = "Rp. ${formatter.format(diskon)}"
+        }
         binding.imgback.setOnClickListener {
             finish()
         }
@@ -80,7 +90,7 @@ class OrderAdminActivity : AppCompatActivity(),AnkoLogger {
 
     fun tambah_keranjang(){
         loading(true)
-        api.tambah_keranjang(PostKeranjang(produkmodel!!.id,produkmodel!!.harga,counter,sessionManager.getid_user())).enqueue(object : Callback<PostProdukResponse> {
+        api.tambah_keranjang(PostKeranjang(produkmodel!!.id,produkmodel!!.harga,counter,sessionManager.getid_user(),produkmodel!!.modal)).enqueue(object : Callback<PostProdukResponse> {
             override fun onResponse(
                 call: Call<PostProdukResponse>,
                 response: Response<PostProdukResponse>

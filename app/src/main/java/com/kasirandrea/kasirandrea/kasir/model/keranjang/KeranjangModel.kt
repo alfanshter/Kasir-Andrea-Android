@@ -13,6 +13,9 @@ data class KeranjangModel(
     @field:SerializedName("harga")
     val harga: Int? = null,
 
+   @field:SerializedName("harga_modal")
+    val harga_modal: Int? = null,
+
     @field:SerializedName("jumlah")
     val jumlah: Int? = null,
 

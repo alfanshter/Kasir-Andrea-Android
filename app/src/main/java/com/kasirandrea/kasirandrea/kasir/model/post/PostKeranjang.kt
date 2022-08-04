@@ -14,5 +14,8 @@ data class PostKeranjang(
 	val jumlah: Int? = null,
 
 	@field:SerializedName("id_user")
-	val idUser: Int? = null
+	val idUser: Int? = null,
+
+	@field:SerializedName("harga_modal")
+	val harga_modal: Int? = null
 )

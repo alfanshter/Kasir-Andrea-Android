@@ -1,6 +1,7 @@
 package com.kasirandrea.kasirandrea.kasir.model.keranjang
 
 import com.google.gson.annotations.SerializedName
+import com.kasirandrea.kasirandrea.kasir.model.modal.HargaModalModel
 
 data class KeranjangResponse(
 
@@ -11,7 +12,11 @@ data class KeranjangResponse(
 	val message: String? = null,
 
 	@field:SerializedName("status")
-	val status: Int? = null
+	val status: Int? = null,
+
+	@field:SerializedName("harga_modal")
+	val harga_modal: HargaModalModel? = null,
+
 )
 
 

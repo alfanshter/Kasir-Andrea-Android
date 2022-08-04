@@ -1,5 +1,6 @@
 package com.kasirandrea.kasirandrea.kasir.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.kasirandrea.kasirandrea.R
 import com.kasirandrea.kasirandrea.kasir.model.keranjang.KeranjangModel
+import com.kasirandrea.kasirandrea.kasir.session.SessionManager
 import com.kasirandrea.kasirandrea.kasir.webservice.Constant
 import com.squareup.picasso.Picasso
 import java.text.DecimalFormat
@@ -17,12 +19,14 @@ class KeranjangSelesaiAdapter(
     private val notesList: MutableList<KeranjangModel>
     ) : RecyclerView.Adapter<KeranjangSelesaiAdapter.ViewHolder>() {
 
+    lateinit var sessionManager: SessionManager
     //database
     private var dialog: Dialog? = null
 
 
     interface Dialog {
         fun onClick(position: Int, KeranjangModel: KeranjangModel)
+        fun onOwner(position: Int, KeranjangModel: KeranjangModel,modal : TextView)
     }
 
     fun setDialog(dialog: Dialog) {
@@ -36,11 +40,13 @@ class KeranjangSelesaiAdapter(
     inner class ViewHolder internal constructor(view: View) : RecyclerView.ViewHolder(view) {
         internal var nama: TextView
         internal var harga: TextView
+        internal var modal: TextView
         internal var foto: ImageView
 
         init {
             nama = view.findViewById(R.id.txtnama)
             harga = view.findViewById(R.id.txtharga)
+            modal = view.findViewById(R.id.txtmodal)
             foto = view.findViewById(R.id.imgfoto)
 
         }
@@ -70,8 +76,11 @@ class KeranjangSelesaiAdapter(
         val formatter: NumberFormat = DecimalFormat("#,###")
         val myNumber = note.harga
         val harga: String = formatter.format(myNumber)
-        holder.harga.text = "Rp. $harga"
+        holder.harga.text = "${note.jumlah} X Rp. $harga"
 
+        if(dialog != null){
+            dialog!!.onOwner(holder.layoutPosition,note,holder.modal)
+        }
 
         holder.itemView.setOnClickListener {
             if(dialog != null){

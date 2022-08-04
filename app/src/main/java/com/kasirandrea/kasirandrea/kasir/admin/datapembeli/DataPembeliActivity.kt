@@ -15,6 +15,7 @@ import org.jetbrains.anko.startActivity
 class DataPembeliActivity : AppCompatActivity() {
     lateinit var binding : ActivityDataPembeliBinding
     var total_belanja  : Int? = null
+    var modal  : Int? = null
     companion object{
         var activity : Activity? = null
     }
@@ -25,6 +26,7 @@ class DataPembeliActivity : AppCompatActivity() {
         activity = this
         val bundle: Bundle? = intent.extras
         total_belanja = bundle!!.getInt("total_belanja")
+        modal = bundle.getInt("modal")
 
         binding.btnselanjutnya.setOnClickListener {
             val nama = binding.edtnama.text.toString().trim()
@@ -36,7 +38,8 @@ class DataPembeliActivity : AppCompatActivity() {
                     "nama" to nama,
                     "telepon" to telepon,
                     "alamat" to alamat,
-                    "total_belanja" to total_belanja
+                    "total_belanja" to total_belanja,
+                    "modal" to modal
                 )
             }else{
                 Snackbar.make(it,"Jangan kosongi kolom",3000).show()

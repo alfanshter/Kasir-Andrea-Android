@@ -7,6 +7,9 @@ data class TotalBelanjaResponse(
 	@field:SerializedName("total_belanja")
 	val totalBelanja: Int? = null,
 
+	@field:SerializedName("modal")
+	val modal: Int? = null,
+
 	@field:SerializedName("message")
 	val message: String? = null,
 

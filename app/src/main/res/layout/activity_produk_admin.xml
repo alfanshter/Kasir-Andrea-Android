@@ -61,11 +61,10 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="20dp"
-                android:queryHint="Masukkan kode produk"
                 android:layout_marginRight="10dp"
                 android:layout_toLeftOf="@id/btnscan"
                 android:background="@drawable/edtbackground"
-                android:inputType="number" />
+                android:queryHint="Masukkan kode produk" />
 
             <ImageView
                 android:id="@+id/btnscan"

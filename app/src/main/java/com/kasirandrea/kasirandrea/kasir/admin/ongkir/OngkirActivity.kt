@@ -49,6 +49,7 @@ class OngkirActivity : AppCompatActivity(), AnkoLogger {
     var telepon : String? = null
     var alamat : String? = null
     var total_belanja : Int? = null
+    var modal : Int? = null
     lateinit var sessionManager: SessionManager
     companion object{
         var kurir: String? = null
@@ -68,6 +69,7 @@ class OngkirActivity : AppCompatActivity(), AnkoLogger {
         telepon = bundle.getString("telepon")
         alamat = bundle.getString("alamat")
         total_belanja = bundle.getInt("total_belanja")
+        modal = bundle.getInt("modal")
 
         progressDialog = ProgressDialog(this)
         binding.rvcekongkir.layoutManager = LinearLayoutManager(this)
@@ -109,7 +111,7 @@ class OngkirActivity : AppCompatActivity(), AnkoLogger {
         loading(true)
         PostPesanan()
         api_kasir.tambah_transaksi(PostPesanan(nama,ongkir,total_belanja!! + ongkir,total_belanja!!,telepon,sessionManager.getid_user(),
-            kurir_name,alamat)).enqueue(object : Callback<PesananResponse>{
+            kurir_name,alamat,modal)).enqueue(object : Callback<PesananResponse>{
             override fun onResponse(
                 call: Call<PesananResponse>,
                 response: Response<PesananResponse>

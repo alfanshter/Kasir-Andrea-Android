@@ -69,6 +69,14 @@ class ProdukAdapter(
             holder.nama.text = note.nama
         }
 
+        if (note.deskripsi!!.length >24){
+            holder.deskripsi.text  = "${note.deskripsi.subSequence(0,24)}.."
+        }else{
+            holder.deskripsi.text = note.deskripsi
+
+        }
+
+
         if (Math.abs(note.harga!! / 1000000) > 1) {
             holder.harga.text = "${(note.harga / 1000000).toString().toString() + "m"}"
         } else if (Math.abs(note.harga / 1000) > 1) {
@@ -77,7 +85,7 @@ class ProdukAdapter(
             holder.harga.text = note.harga.toString()
         }
 
-        holder.deskripsi.text = note.deskripsi
+
 
         holder.itemView.setOnClickListener {
             if(dialog != null){

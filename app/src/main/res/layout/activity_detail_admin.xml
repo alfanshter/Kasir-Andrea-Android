@@ -31,6 +31,8 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/btnback"
+                    android:paddingTop="10dp"
                     android:layout_centerVertical="true"
                     android:background="@drawable/imgback"
                     android:backgroundTint="@color/white" />

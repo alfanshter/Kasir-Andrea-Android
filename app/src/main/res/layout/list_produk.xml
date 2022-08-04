@@ -21,10 +21,13 @@
 
         <TextView
             android:id="@+id/txtnama"
+            android:paddingLeft="15dp"
+            android:paddingTop="5dp"
+            android:paddingRight="35dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_medium"
-            android:text="Sari Murni Jeruk Nipis"
+            android:text="Sari Murni Jeruk Nipis 100% Murni tanpa campuran / JENIPER"
             android:textColor="@color/black"
             android:textSize="14.5dp"
             android:textStyle="bold" />
@@ -34,7 +37,7 @@
             android:id="@+id/txtdeskripsi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="22dp"
             android:layout_marginTop="6dp"
             android:layout_marginRight="35dp"
             android:fontFamily="@font/roboto_medium"

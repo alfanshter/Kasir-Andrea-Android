@@ -63,37 +63,57 @@
                             android:layout_marginStart="20dp"
                             android:layout_marginTop="20dp"
                             android:layout_marginEnd="20dp"
-                            android:layout_toLeftOf="@+id/txtharga"
+                            android:layout_toLeftOf="@+id/lnharga"
                             android:fontFamily="@font/roboto_medium"
                             android:text="Aesthetic Daisy"
                             android:textColor="@color/black"
                             android:textSize="25dp"
                             android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/txtharga"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginEnd="20dp"
-                            android:fontFamily="@font/roboto_medium"
-                            android:text="Rp 175.000"
-                            android:textColor="@color/biru"
-                            android:textSize="20dp"
-                            android:textStyle="bold" />
+                      <LinearLayout
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_alignParentEnd="true"
+                          android:layout_marginStart="20dp"
+                          android:layout_marginTop="20dp"
+                          android:id="@+id/lnharga"
+                          android:layout_marginEnd="20dp"
+
+                          android:orientation="vertical">
+                          <TextView
+                              android:id="@+id/txtharga"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:fontFamily="@font/roboto_medium"
+                              android:text="Rp 175.000"
+                              android:textColor="@color/biru"
+                              android:textSize="20dp"
+                              android:textStyle="bold" />
+
+                          <TextView
+                              android:id="@+id/txtdiskon"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:fontFamily="@font/roboto_medium"
+                              android:text="Rp 175.000"
+                              android:visibility="gone"
+                              android:textColor="@color/biru"
+                              android:textSize="16dp"
+                              android:textStyle="bold" />
+
+                      </LinearLayout>
 
                     </RelativeLayout>
 
                     <TextView
-                        android:id="@+id/txtserum"
+                        android:id="@+id/txtgrosir"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:fontFamily="@font/roboto_medium"
-                        android:text="White Glow Serum (15ml)"
+                        android:text="Harga Grosir Rp. 170.000 (min 10 pcs)"
                         android:textSize="17dp"
+                        android:textColor="@color/biru"
                         android:textStyle="normal" />
 
                     <TextView
@@ -113,6 +133,7 @@
                         android:layout_marginTop="30dp"
                         android:fontFamily="@font/roboto_medium"
                         android:text="Deskripsi"
+                        android:textColor="@color/black"
                         android:textSize="20dp"
                         android:textStyle="bold" />
 
@@ -120,7 +141,9 @@
                         android:layout_width="wrap_content"
                         android:id="@+id/txtdeskripsi"
                         android:layout_height="wrap_content"
-                        android:layout_margin="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
                         android:fontFamily="@font/roboto_medium"
                         android:text="Untuk kulit berjerawat, normal, kombinasi
 Isi: 15ml

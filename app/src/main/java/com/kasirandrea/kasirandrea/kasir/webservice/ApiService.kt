@@ -8,6 +8,7 @@ import com.kasirandrea.kasirandrea.kasir.model.gaji.PostBayarGaji
 import com.kasirandrea.kasirandrea.kasir.model.gaji.RiwayatGajiResponse
 import com.kasirandrea.kasirandrea.kasir.model.keranjang.KeranjangResponse
 import com.kasirandrea.kasirandrea.kasir.model.keranjang.TotalBelanjaResponse
+import com.kasirandrea.kasirandrea.kasir.model.penghasilan.PenghasilanResponse
 import com.kasirandrea.kasirandrea.kasir.model.pesanan.ListPesananResponse
 import com.kasirandrea.kasirandrea.kasir.model.pesanan.NotaResponse
 import com.kasirandrea.kasirandrea.kasir.model.pesanan.PesananBulananResponse
@@ -44,6 +45,10 @@ interface ApiService {
         @Part("deskripsi") deskripsi: RequestBody,
         @Part("harga") harga: RequestBody,
         @Part("stok") stok: RequestBody,
+        @Part("harga_grosir") harga_grosir: RequestBody,
+        @Part("jumlah_grosir") jumlah_grosir: RequestBody,
+        @Part("diskon") diskon: RequestBody,
+        @Part("modal") modal: RequestBody
     ): Call<PostProdukResponse>
 
     //EDIT PRODUK
@@ -92,7 +97,7 @@ interface ApiService {
     //Pencarian Produk
     @GET("search_produk")
     fun search_produk(
-        @Query("id") id: Int
+        @Query("nama") nama: String
     ): Call<ProdukResponse>
 
     //Detail Produk
@@ -126,6 +131,14 @@ interface ApiService {
     fun search_admin(
         @Query("nama") nama: String
     ): Call<AdminResponse>
+
+    //tambah gaji
+    @FormUrlEncoded
+    @POST("delete_admin")
+    fun delete_admin(
+        @Field("id") id: Int,
+        @Field("foto") foto: String
+    ): Call<PostProdukResponse>
     //=======================END ADMIN==================
 
     //=======================KERANJANG==================
@@ -226,5 +239,12 @@ interface ApiService {
     fun bayar_gaji(@Body post: PostBayarGaji): Call<PostProdukResponse>
 
     //=======================END GAJI==================
+    //=======================PENGHASILAN====================
+    //riwayat gaji admin
+    @GET("penghasilan_bulanan")
+    fun penghasilan_bulanan(
+    ): Call<PenghasilanResponse>
+
+    //=======================END PENGHASILAN==================
 
 }

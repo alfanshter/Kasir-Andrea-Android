@@ -58,6 +58,7 @@ class DetailProdukActivity : AppCompatActivity(),AnkoLogger {
         val harga = produkmodel!!.harga
 
         binding.txtharga.text = "Rp. ${formatter.format(harga)}"
+        binding.txtmodal.text = "Rp. ${formatter.format(produkmodel!!.modal)}"
         binding.txtstok.text = "${produkmodel!!.stok} Produk"
         binding.txtdeskripsi.text = produkmodel!!.deskripsi
         Picasso.get().load(Constant.folder_foto+produkmodel!!.foto).centerCrop().fit().into(binding.imgreview)
