@@ -90,7 +90,8 @@ interface ApiService {
     @POST("hapus_produk")
     fun hapus_produk(
         @Field("oldImage") oldImage: String,
-        @Field("id") id: Int    ): Call<PostProdukResponse>
+        @Field("id") id: Int
+    ): Call<PostProdukResponse>
 
     //Produk
     @GET("produk")
@@ -101,7 +102,8 @@ interface ApiService {
     @FormUrlEncoded
     @POST("generate_qrcode")
     fun generate_qrcode(
-        @Field("id") id: Int): Call<NotaResponse>
+        @Field("id") id: Int
+    ): Call<NotaResponse>
 
     //Pencarian Produk
     @GET("search_produk")
@@ -138,7 +140,7 @@ interface ApiService {
     //Admin
     @GET("profil_admin")
     fun profil_admin(
-        @Query("id") id : Int
+        @Query("id") id: Int
     ): Call<UsersResponse>
 
 
@@ -195,6 +197,7 @@ interface ApiService {
     fun total_belanja(
         @Query("id_user") id_user: Int
     ): Call<TotalBelanjaResponse>
+
     //=======================END KERANJANG==================
     //=======================PESANAN==================
     @Headers("Content-Type: application/json")
@@ -205,7 +208,19 @@ interface ApiService {
     @FormUrlEncoded
     @POST("pesanan_selesai")
     fun pesanan_selesai(
-        @Field("id") id: Int): Call<PostProdukResponse>
+        @Field("id") id: Int,
+        @Field("id_user") id_user: Int,
+        @Field("nomorpesanan") nomorpesanan: String
+
+    ): Call<PostProdukResponse>
+
+    //batalkan pesanan
+    @FormUrlEncoded
+    @POST("pesanan_dibatalkan")
+    fun pesanan_dibatalkan(
+        @Field("id") id: Int,
+        @Field("nomorpesanan") nomorpesanan: String
+    ): Call<PostProdukResponse>
 
     //get pesanan sesuai id
     @GET("get_pesanan_id")
@@ -213,9 +228,22 @@ interface ApiService {
         @Query("id_user") id_user: Int
     ): Call<ListPesananResponse>
 
+    //search pesanan sesuai id
+    @GET("search_pesanan_id")
+    fun search_pesanan_id(
+        @Query("id_user") id_user: Int,
+        @Query("nama") nama: String
+    ): Call<ListPesananResponse>
+
     //get pesanan bulanan
     @GET("get_pesanan_owner")
     fun get_pesanan_owner(): Call<ListPesananResponse>
+
+    //search pesanan owner
+    @GET("search_pesanan_owner")
+    fun search_pesanan_owner(
+        @Query("nama") nama: String
+    ): Call<ListPesananResponse>
 
     @FormUrlEncoded
     @POST("cetak_nota")

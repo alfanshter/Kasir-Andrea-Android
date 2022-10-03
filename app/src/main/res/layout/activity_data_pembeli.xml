@@ -22,97 +22,138 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="31dp"
+                android:layout_marginTop="31sp"
                 android:background="@drawable/status_data_pembeli" />
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="19dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginLeft="19sp"
+                android:layout_marginTop="20sp"
                 android:fontFamily="@font/roboto_medium"
                 android:text="Data Pembeli"
                 android:textColor="@color/biru"
-                android:textSize="29dp" />
+                android:textSize="29sp" />
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="19dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginLeft="19sp"
+                android:layout_marginTop="20sp"
                 android:fontFamily="@font/roboto_medium"
                 android:text="Nama Lengkap"
                 android:textColor="@color/black"
-                android:textSize="17dp" />
+                android:textSize="17sp" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:layout_marginLeft="19dp"
-                android:layout_marginTop="10dp"
+                android:paddingLeft="10sp"
+                android:layout_marginLeft="19sp"
+                android:layout_marginTop="10sp"
                 android:id="@+id/edtnama"
-                android:layout_marginRight="19dp"
+                android:layout_marginRight="19sp"
                 android:background="@drawable/edtinput" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="19dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginLeft="19sp"
+                android:layout_marginTop="20sp"
                 android:fontFamily="@font/roboto_medium"
                 android:text="Telepon"
                 android:textColor="@color/black"
-                android:textSize="17dp" />
+                android:textSize="17sp" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="19dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginLeft="19sp"
+                android:layout_marginTop="10sp"
                 android:id="@+id/edttelepon"
                 android:inputType="number"
-                android:paddingLeft="10dp"
-                android:layout_marginRight="19dp"
+                android:paddingLeft="10sp"
+                android:layout_marginRight="19sp"
                 android:background="@drawable/edtinput" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="19dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginLeft="19sp"
+                android:layout_marginTop="20sp"
                 android:fontFamily="@font/roboto_medium"
                 android:text="Alamat"
                 android:textColor="@color/black"
-                android:textSize="17dp" />
+                android:textSize="17sp" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="100dp"
-                android:layout_marginLeft="19dp"
-                android:paddingLeft="10dp"
+                android:minHeight="100sp"
+                android:layout_marginLeft="19sp"
+                android:paddingLeft="10sp"
                 android:gravity="start"
-                android:paddingTop="5dp"
-                android:layout_marginTop="10dp"
+                android:paddingTop="5sp"
+                android:layout_marginTop="10sp"
                 android:id="@+id/edtalamat"
-                android:layout_marginRight="19dp"
+                android:layout_marginRight="19sp"
                 android:background="@drawable/edtinput" />
 
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19sp"
+                android:layout_marginTop="20sp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Ekspedisi"
+                android:textColor="@color/black"
+                android:textSize="17sp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19sp"
+                android:layout_marginTop="10sp"
+                android:id="@+id/edtekspedisi"
+                android:inputType="text"
+                android:paddingLeft="10sp"
+                android:layout_marginRight="19sp"
+                android:background="@drawable/edtinput" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19sp"
+                android:layout_marginTop="20sp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Ongkir"
+                android:textColor="@color/black"
+                android:textSize="17sp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19sp"
+                android:layout_marginTop="10sp"
+                android:id="@+id/edtongkir"
+                android:inputType="number"
+                android:paddingLeft="10sp"
+                android:layout_marginRight="19sp"
+                android:background="@drawable/edtinput" />
             <com.google.android.material.button.MaterialButton
                 android:layout_width="match_parent"
                 app:backgroundTint="@color/biru"
-                app:cornerRadius="10dp"
+                app:cornerRadius="10sp"
                 android:text="Selanjutnya"
                 android:id="@+id/btnselanjutnya"
                 android:textAllCaps="false"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="20sp"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:textSize="19dp"
-                android:layout_margin="19dp"
+                android:textSize="19sp"
+                android:layout_margin="19sp"
                 android:fontFamily="@font/roboto_medium"
                 android:layout_height="wrap_content" />
 

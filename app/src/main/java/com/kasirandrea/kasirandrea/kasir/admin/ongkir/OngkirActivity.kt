@@ -125,9 +125,9 @@ class OngkirActivity : AppCompatActivity(), AnkoLogger {
                             startActivity<DetailPesananActivity>(
                                 "pesanan" to  noteJson
                             )
+                            OngkirActivity.activity!!.finish()
                             DataPembeliActivity.activity!!.finish()
                             ProdukAdminActivity.sheet.dismiss()
-                            finish()
                         }else if (response.body()!!.status ==2){
                             loading(false)
                             toast("jangan kosongi kolom")
@@ -397,10 +397,15 @@ class OngkirActivity : AppCompatActivity(), AnkoLogger {
                     if (kurir =="manual"){
                         binding.txtnamakurir.visibility = View.VISIBLE
                         binding.edtnamakurir.visibility = View.VISIBLE
+                        binding.lnongkir.visibility = View.GONE
                     }else{
                         binding.txtnamakurir.visibility = View.GONE
                         binding.edtnamakurir.visibility = View.GONE
+                        binding.lnongkir.visibility = View.VISIBLE
+
                     }
+
+
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>) {

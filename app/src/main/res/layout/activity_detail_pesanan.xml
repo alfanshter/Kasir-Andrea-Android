@@ -418,11 +418,25 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Pesanan dicancel"
+                android:textColor="#FF0000"
+                android:textStyle="bold"
+                android:visibility="gone"
+                android:id="@+id/txtcancel"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:textSize="15dp" />
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btncheckout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Cetak Nota"
+                android:visibility="visible"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 app:backgroundTint="@color/biru"
@@ -435,6 +449,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Selesaikan Pesanan"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/biru"
+                app:cornerRadius="7dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btncancel"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cancel Pesanan"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 app:backgroundTint="@color/biru"

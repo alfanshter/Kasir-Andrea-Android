@@ -40,6 +40,7 @@ class ListPesananAdapter(
         internal var txtkalender: TextView
         internal var txtharga: TextView
         internal var txtstatus: TextView
+        internal var txtnama: TextView
 
 
         init {
@@ -47,6 +48,7 @@ class ListPesananAdapter(
             txtkalender = view.findViewById(R.id.txtkalender)
             txtharga = view.findViewById(R.id.txtharga)
             txtstatus = view.findViewById(R.id.txtstatus)
+            txtnama = view.findViewById(R.id.txtnama)
 
         }
     }
@@ -65,13 +67,14 @@ class ListPesananAdapter(
         val formatter: NumberFormat = DecimalFormat("#,###")
 
         holder.txtnomorpesanan.text = note.nomorpesanan
+        holder.txtnama.text = note.nama
         holder.txtharga.text = "Rp. ${formatter.format(note.harga)}"
         if (note.is_status == 0){
             holder.txtstatus.text = "Dalam Proses"
         }else if (note.is_status == 1){
             holder.txtstatus.text = "Sukses"
         }else if (note.is_status == 2){
-            holder.txtstatus.text = "Gagal"
+            holder.txtstatus.text = "Cancel"
         }
         val sdf = SimpleDateFormat("dd MMM, hh:mm a")
         val currentDate = sdf.format(note.createdAt)

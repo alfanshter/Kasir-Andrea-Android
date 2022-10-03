@@ -51,7 +51,7 @@ class TambahProdukActivity : AppCompatActivity(),AnkoLogger {
             binding.edtnamaproduk.setText(produkmodel!!.nama)
             binding.edtdeskripsi.setText(produkmodel!!.deskripsi)
             binding.edtharga.setText(produkmodel!!.harga.toString())
-            binding.edtstok.setText(produkmodel!!.stok)
+            binding.edtstok.setText(produkmodel!!.stok.toString())
             binding.edtmodal.setText(produkmodel!!.modal.toString())
             binding.edtdiskon.setText(produkmodel!!.diskon.toString())
             binding.edtjumlahgrosir.setText(produkmodel!!.jumlah_grosir.toString())

@@ -65,7 +65,12 @@
                 android:layout_marginRight="10dp"
                 android:layout_toLeftOf="@id/btntambah"
                 android:background="@drawable/edtbackground"
-                android:inputType="text" />
+                android:inputType="text"
+                android:focusableInTouchMode="true"
+                android:queryBackground="@android:color/transparent"
+                android:iconifiedByDefault="false"
+                android:queryHint="Masukkan nama produk"
+                />
 
             <ImageView
                 android:id="@+id/btntambah"

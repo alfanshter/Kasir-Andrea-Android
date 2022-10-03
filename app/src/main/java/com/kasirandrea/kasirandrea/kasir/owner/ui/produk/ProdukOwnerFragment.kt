@@ -87,7 +87,7 @@ class ProdukOwnerFragment : Fragment(),AnkoLogger {
             override fun onFailure(call: Call<PostProdukResponse>, t: Throwable) {
                 loading(false)
                 info { "dinda ${t.message}" }
-                toast("Kesalahan jaringan")
+                toast("Silahkan coba lagi")
             }
 
         })
@@ -139,10 +139,13 @@ class ProdukOwnerFragment : Fragment(),AnkoLogger {
                         }
                     } catch (e: Exception) {
                         info { "dinda ${e.message}" }
+                        getproduk()
                     }
                 }
 
                 override fun onFailure(call: Call<ProdukResponse>, t: Throwable) {
+                    getproduk()
+                    toast("jaringan tidak stabil")
                     info { "dinda ${t.message}" }
                 }
 

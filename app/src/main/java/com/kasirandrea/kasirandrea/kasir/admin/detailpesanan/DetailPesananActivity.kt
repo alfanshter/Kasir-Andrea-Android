@@ -108,9 +108,26 @@ class DetailPesananActivity : AppCompatActivity(), AnkoLogger{
 
         if (pesanan!!.is_status == 0){
             binding.btnselesai.visibility = View.VISIBLE
-        }else{
-            binding.btnselesai.visibility = View.GONE
+            if (sessionManager.getLoginowner() == true){
+                binding.btncancel.visibility = View.VISIBLE
+            }else{
+                binding.btncancel.visibility = View.GONE
+            }
 
+            binding.txtcancel.visibility = View.GONE
+            binding.btncheckout.visibility = View.VISIBLE
+
+        }else if (pesanan!!.is_status == 1){
+            binding.btnselesai.visibility = View.GONE
+            binding.btncancel.visibility = View.GONE
+            binding.txtcancel.visibility = View.GONE
+            binding.btncheckout.visibility = View.VISIBLE
+        }
+        else if (pesanan!!.is_status == 2){
+            binding.btnselesai.visibility = View.GONE
+            binding.btncancel.visibility = View.GONE
+            binding.btncheckout.visibility = View.GONE
+            binding.txtcancel.visibility = View.VISIBLE
         }
 
         binding.btnselesai.setOnClickListener {
@@ -119,6 +136,21 @@ class DetailPesananActivity : AppCompatActivity(), AnkoLogger{
             builder.setMessage("Apakah anda akan menyelesaikan pesanan ? ")
             builder.setPositiveButton(android.R.string.yes) { dialog, which ->
                 selesaikan_pesanan()
+            }
+
+            builder.setNegativeButton(android.R.string.no) { dialog, which ->
+            }
+
+            builder.show()
+
+        }
+
+        binding.btncancel.setOnClickListener {
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Pesanan")
+            builder.setMessage("Apakah anda akan mencancel pesanan ? ")
+            builder.setPositiveButton(android.R.string.yes) { dialog, which ->
+                pesanan_dibatalkan()
             }
 
             builder.setNegativeButton(android.R.string.no) { dialog, which ->
@@ -258,7 +290,7 @@ class DetailPesananActivity : AppCompatActivity(), AnkoLogger{
     }
     fun selesaikan_pesanan(){
         loading(true)
-        api.pesanan_selesai(pesanan!!.id!!).enqueue(object : Callback<PostProdukResponse> {
+        api.pesanan_selesai(pesanan!!.id!!,pesanan!!.idUser!!,pesanan!!.nomorpesanan!!).enqueue(object : Callback<PostProdukResponse> {
             override fun onResponse(
                 call: Call<PostProdukResponse>,
                 response: Response<PostProdukResponse>
@@ -268,6 +300,47 @@ class DetailPesananActivity : AppCompatActivity(), AnkoLogger{
                         if (response.body()!!.status == 1){
                             loading(false)
                             toast("pesanan diselesaikan")
+                            finish()
+                        }else if (response.body()!!.status ==2){
+                            loading(false)
+                            toast("jangan kosongi kolom")
+                        }else{
+                            loading(false)
+                            toast("silahkan ulangi lagi")
+
+                        }
+                    }
+                }catch (e :Exception){
+                    loading(false)
+                    info { "dinda cath ${e.message}" }
+
+                }
+
+            }
+
+            override fun onFailure(call: Call<PostProdukResponse>, t: Throwable) {
+                loading(false)
+                info { "dinda failure ${t.message}" }
+                toast("silahkan hubungi developer")
+
+            }
+
+        })
+
+    }
+
+    fun pesanan_dibatalkan(){
+        loading(true)
+        api.pesanan_dibatalkan(pesanan!!.id!!,pesanan!!.nomorpesanan!!).enqueue(object : Callback<PostProdukResponse> {
+            override fun onResponse(
+                call: Call<PostProdukResponse>,
+                response: Response<PostProdukResponse>
+            ) {
+                try {
+                    if (response.isSuccessful){
+                        if (response.body()!!.status == 1){
+                            loading(false)
+                            toast("pesanan dibatalkan")
                             finish()
                         }else if (response.body()!!.status ==2){
                             loading(false)

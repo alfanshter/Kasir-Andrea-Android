@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
+import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.kasirandrea.kasirandrea.R
 import com.kasirandrea.kasirandrea.databinding.ActivityOrderAdminBinding
@@ -83,7 +84,11 @@ class OrderAdminActivity : AppCompatActivity(),AnkoLogger {
             if (counter == 0){
              toast("Jumlah tidak boleh kosong")
             }else{
-                tambah_keranjang()
+                if (counter > produkmodel!!.stok!!){
+                    Snackbar.make(it,"Stok Kurang",3000).show()
+                }else{
+                    tambah_keranjang()
+                }
             }
         }
     }

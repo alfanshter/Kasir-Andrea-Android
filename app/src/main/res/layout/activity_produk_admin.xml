@@ -63,8 +63,11 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="10dp"
                 android:layout_toLeftOf="@id/btnscan"
+                android:focusableInTouchMode="true"
+                android:queryBackground="@android:color/transparent"
+                android:iconifiedByDefault="false"
                 android:background="@drawable/edtbackground"
-                android:queryHint="Masukkan kode produk" />
+                android:queryHint="Masukkan nama produk" />
 
             <ImageView
                 android:id="@+id/btnscan"

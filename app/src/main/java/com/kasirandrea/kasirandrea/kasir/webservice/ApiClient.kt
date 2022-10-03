@@ -10,6 +10,7 @@ class ApiClient {
         private var retrofit: Retrofit? = null
 
         private fun getClient(): Retrofit {
+
             var opt = OkHttpClient.Builder().apply {
                 connectTimeout(30, TimeUnit.SECONDS)
                 readTimeout(30, TimeUnit.SECONDS)
