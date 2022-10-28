@@ -54,14 +54,16 @@ class TransaksiOwnerFragment : Fragment(), AnkoLogger {
         (binding.rvpesanan.layoutManager as LinearLayoutManager).orientation =
             LinearLayoutManager.VERTICAL
 
+        get_keranjang()
+        penghasilan()
+
         return binding.root
 
     }
 
     override fun onStart() {
         super.onStart()
-        get_keranjang()
-        penghasilan()
+
     }
 
     fun penghasilan() {

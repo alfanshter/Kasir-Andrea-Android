@@ -49,6 +49,8 @@ class ProdukOwnerFragment : Fragment(),AnkoLogger {
         progressDialog = ProgressDialog(requireActivity())
         sessionManager = SessionManager(requireContext().applicationContext)
 
+        getproduk()
+
         binding.btntambah.setOnClickListener {
             startActivity<TambahProdukActivity>()
         }
@@ -206,7 +208,7 @@ class ProdukOwnerFragment : Fragment(),AnkoLogger {
                 }
 
                 override fun onFailure(call: Call<ProdukResponse>, t: Throwable) {
-                    TODO("Not yet implemented")
+
                 }
 
             })
@@ -265,7 +267,6 @@ class ProdukOwnerFragment : Fragment(),AnkoLogger {
 
     override fun onStart() {
         super.onStart()
-        getproduk()
     }
 
     fun loading(status: Boolean) {

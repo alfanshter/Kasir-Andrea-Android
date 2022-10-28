@@ -50,6 +50,8 @@ class ProdukAdminActivity : AppCompatActivity(),AnkoLogger {
         (binding.rvproduk.layoutManager as LinearLayoutManager).orientation =
             LinearLayoutManager.VERTICAL
 
+        getproduk()
+
         binding.imgFoto.setOnClickListener {
                 sheet.show(supportFragmentManager, "KeranjangFragment")
         }
@@ -170,7 +172,6 @@ class ProdukAdminActivity : AppCompatActivity(),AnkoLogger {
                 }
 
                 override fun onFailure(call: Call<ProdukResponse>, t: Throwable) {
-                    TODO("Not yet implemented")
                 }
 
             })
@@ -230,7 +231,6 @@ class ProdukAdminActivity : AppCompatActivity(),AnkoLogger {
 
     override fun onStart() {
         super.onStart()
-        getproduk()
 
     }
 }
